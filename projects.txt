@@ -13,6 +13,7 @@ openstack/glance
 openstack/ha-guide
 openstack/heat
 openstack/ironic
+openstack/ironic-lib
 openstack/ironic-python-agent
 openstack/keystone
 openstack/keystonemiddleware
@@ -83,7 +84,6 @@ openstack/zaqar
 stackforge/blazar
 stackforge/blazar-nova
 stackforge/congress
-stackforge/nova-docker
 stackforge/octavia
 stackforge/python-blazarclient
 stackforge/python-congressclient
