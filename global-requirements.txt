@@ -9,13 +9,13 @@ Babel>=1.3
 boto>=2.32.1
 cassandra-driver>=2.1.4 # Apache-2.0
 cffi
-cliff~=1.10.0  # Apache-2.0
+cliff>=1.10.0,<1.11.0  # Apache-2.0
 cmd2>=0.6.7
 coinor.pulp>=1.0.4
 croniter>=0.3.4 # MIT License
-cryptography>=0.4 # Apache-2.0
+cryptography>=0.8 # Apache-2.0
 ddt>=0.4.0
-debtcollector~=0.3.0  # Apache-2.0
+debtcollector>=0.3.0,<0.4.0  # Apache-2.0
 decorator>=3.4.0
 dib-utils  # Apache-2.0
 diskimage-builder>=0.1.20
@@ -27,12 +27,11 @@ dnspython>=1.12.0
 dogpile.cache>=0.5.3
 elasticsearch>=1.3.0
 enum34
-eventlet>=0.16.1
+eventlet>=0.16.1,!=0.17.0
 extras
 falcon>=0.1.6,<0.2.0
 Flask>=0.10,<1.0
 futures>=2.1.6
-gabbi>=0.6.0
 glance_store>=0.3.0                   # Apache-2.0
 greenlet>=0.3.2
 happybase>=0.5,!=0.7
@@ -44,7 +43,7 @@ jsonpath-rw>=1.2.0,<2.0
 jsonrpclib
 jsonschema>=2.0.0,<3.0.0
 kazoo>=1.3.1
-keystonemiddleware>=1.0.0
+keystonemiddleware>=1.5.0
 pyScss>=1.2.1,<1.3  # MIT License
 django-pyscss>=1.0.3  # BSD License (2 clause)
 kombu>=2.5.0
@@ -59,20 +58,20 @@ networkx>=1.8
 oauthlib>=0.6
 openstackdocstheme>=1.0.3
 ordereddict
-oslo.config~=1.9.3  # Apache-2.0
-oslo.concurrency~=1.8.0         # Apache-2.0
-oslo.context~=0.2.0                     # Apache-2.0
-oslo.db~=1.7.0  # Apache-2.0
-oslo.i18n~=1.5.0  # Apache-2.0
-oslo.log~=1.0.0  # Apache-2.0
-oslo.messaging~=1.8.0  # Apache-2.0
-oslo.middleware~=1.0.0                  # Apache-2.0
-oslo.policy~=0.3.1  # Apache-2.0
-oslo.rootwrap~=1.6.0  # Apache-2.0
-oslo.serialization~=1.4.0               # Apache-2.0
-oslo.utils~=1.4.0                       # Apache-2.0
-oslo.vmware~=0.11.1                     # Apache-2.0
-oslo.versionedobjects~=0.1.1
+oslo.config>=1.9.3,<1.10.0  # Apache-2.0
+oslo.concurrency>=1.8.0,<1.9.0         # Apache-2.0
+oslo.context>=0.2.0,<0.3.0                     # Apache-2.0
+oslo.db>=1.7.0,<1.8.0  # Apache-2.0
+oslo.i18n>=1.5.0,<1.6.0  # Apache-2.0
+oslo.log>=1.0.0,<1.1.0  # Apache-2.0
+oslo.messaging>=1.8.0,<1.9.0  # Apache-2.0
+oslo.middleware>=1.0.0,<1.1.0                  # Apache-2.0
+oslo.policy>=0.3.1,<0.4.0  # Apache-2.0
+oslo.rootwrap>=1.6.0,<1.7.0  # Apache-2.0
+oslo.serialization>=1.4.0,<1.5.0               # Apache-2.0
+oslo.utils>=1.4.0,<1.5.0                       # Apache-2.0
+oslo.vmware>=0.11.1,<0.12.0                     # Apache-2.0
+oslo.versionedobjects>=0.1.1,<0.2.0
 osprofiler>=0.3.0                       # Apache-2.0
 os-apply-config
 os-client-config
@@ -89,8 +88,8 @@ pecan>=0.8.0
 pexpect>=3.1,!=3.3 # ISC License
 Pillow==2.4.0 # MIT
 Pint>=0.5  # BSD
-pip>=1.4
-pip_missing_reqs>=1.1.5
+pip>=6.0
+pip_missing_reqs>=1.2.1
 posix_ipc
 PrettyTable>=0.7,<0.8
 psutil>=1.1.1,<2.0.0
@@ -102,7 +101,7 @@ PyECLib>=1.0.3                          # BSD
 pyghmi>=0.6.11
 pykmip>=0.2.0  # Apache 2.0 License
 pymemcache>=1.2  # Apache 2.0 License
-pymongo>=2.5
+pymongo>=2.6.3
 PyMySQL>=0.6.2  # MIT License
 pyOpenSSL>=0.11
 pyparsing>=2.0.1
@@ -124,8 +123,8 @@ python-keystoneclient>=1.1.0
 python-marconiclient>=0.0.2
 python-memcached>=1.48
 python-neutronclient>=2.3.11,<3
-python-novaclient>=2.18.0,!=2.21.0
-python-saharaclient>=0.7.6
+python-novaclient>=2.22.0
+python-saharaclient>=0.8.0
 python-openstackclient>=1.0.0
 python-openstacksdk>=0.2.1
 python-swiftclient>=2.2.0
@@ -148,7 +147,7 @@ six>=1.9.0
 sockjs-tornado>=1.0.0,<2.0.0
 SQLAlchemy>=0.9.7,<=0.9.99
 sqlalchemy-migrate>=0.9.5
-stevedore~=1.3.0  # Apache-2.0
+stevedore>=1.3.0,<1.4.0  # Apache-2.0
 sysv_ipc>=0.6.8  # BSD License
 
 # NOTE(dims): suds is not python 3.x compatible, suds-jurko is a fork that
@@ -158,9 +157,9 @@ sysv_ipc>=0.6.8  # BSD License
 suds>=0.4
 suds-jurko>=0.6
 
-taskflow~=0.7.1
-tempest-lib>=0.3.0
-tooz~=0.13.1 # Apache-2.0
+taskflow>=0.7.1,<0.8.0
+tempest-lib>=0.4.0
+tooz>=0.13.1,<0.14.0 # Apache-2.0
 tripleo-image-elements
 urllib3>=1.8.3
 warlock>=1.0.1,<2
@@ -206,6 +205,7 @@ doc8  # Apache-2.0
 feedparser
 fixtures>=0.3.14
 flake8==2.2.4
+gabbi>=0.12.0  # Apache-2.0
 hacking>=0.10.0,<0.11
 hgtools # dependency of pytest-runner that is only in setup_requires
 httpretty>=0.8.4,!=0.8.7,!=0.8.8
@@ -224,8 +224,8 @@ nosehtmloutput>=0.0.3
 nosexcover
 openstack-doc-tools>=0.23
 openstack.nose_plugin>=0.7
-oslosphinx~=2.5.0  # Apache-2.0
-oslotest~=1.5.1  # Apache-2.0
+oslosphinx>=2.5.0,<2.6.0  # Apache-2.0
+oslotest>=1.5.1,<1.6.0  # Apache-2.0
 pep8==1.5.7
 proboscis==1.2.5.3
 psycopg2
@@ -237,7 +237,7 @@ python-ldap>=2.4
 python-subunit>=0.0.18
 pyzmq>=14.3.1 # LGPL+BSD
 redis>=2.10.0
-requests-mock>=0.5.1  # Apache-2.0
+requests-mock>=0.6.0  # Apache-2.0
 retrying>=1.2.3,!=1.3.0 # Apache-2.0
 selenium
 # It may not be safe to have the installation tools upgrade or downgrade
@@ -264,8 +264,3 @@ Werkzeug>=0.7  # BSD License
 wsgi_intercept>=0.6.1 # MIT License
 xvfbwrapper>=0.1.3 #license: MIT
 zake>=0.1.6 # Apache-2.0
-
-# External libraries not tested in the gate, but present here to synchronize
-# packaging efforts. These are required by projects to enable hardware- or
-# vendor-specific functionality.
-proliantutils>=0.1.0 # Apache-2.0
