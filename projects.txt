@@ -10,6 +10,7 @@ openstack/debtcollector
 openstack/designate
 openstack/diskimage-builder
 openstack/django_openstack_auth
+openstack/futurist
 openstack/glance
 openstack/glance_store
 openstack/heat
@@ -20,6 +21,7 @@ openstack/keystone
 openstack/keystonemiddleware
 openstack/magnum
 openstack/manila
+openstack/networking-odl
 openstack/neutron
 openstack/neutron-fwaas
 openstack/neutron-lbaas
@@ -43,6 +45,7 @@ openstack/oslo.middleware
 openstack/oslo.policy
 openstack/oslo.rootwrap
 openstack/oslo.serialization
+openstack/oslo.service
 openstack/oslo.utils
 openstack/oslo.versionedobjects
 openstack/oslo.vmware
