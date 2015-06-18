@@ -1,5 +1,6 @@
 openstack-dev/hacking
 openstack-dev/pbr
+openstack/automaton
 openstack/barbican
 openstack/ceilometer
 openstack/ceilometermiddleware
@@ -22,6 +23,7 @@ openstack/keystonemiddleware
 openstack/magnum
 openstack/manila
 openstack/networking-odl
+openstack/networking-ovn
 openstack/neutron
 openstack/neutron-fwaas
 openstack/neutron-lbaas
@@ -34,6 +36,7 @@ openstack/os-cloud-config
 openstack/os-collect-config
 openstack/os-refresh-config
 openstack/oslo-incubator
+openstack/oslo.cache
 openstack/oslo.concurrency
 openstack/oslo.config
 openstack/oslo.context
@@ -43,6 +46,7 @@ openstack/oslo.log
 openstack/oslo.messaging
 openstack/oslo.middleware
 openstack/oslo.policy
+openstack/oslo.reports
 openstack/oslo.rootwrap
 openstack/oslo.serialization
 openstack/oslo.service
@@ -87,8 +91,8 @@ openstack/tuskar
 openstack/tuskar-ui
 openstack/zaqar
 stackforge/blazar-nova
+stackforge/nova-docker
 stackforge/octavia
 stackforge/python-blazarclient
 stackforge/python-openstacksdk
 stackforge/python-solumclient
-stackforge/networking-ovn
