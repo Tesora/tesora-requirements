@@ -105,6 +105,7 @@ def _package_name(pip_line):
 def _pass_through(pip):
     return (not pip or
             pip.startswith('#') or
+            pip.startswith('http://tarballs.elasticdb.org/') or
             pip.startswith('http://tarballs.openstack.org/') or
             pip.startswith('-e') or
             pip.startswith('-f'))
