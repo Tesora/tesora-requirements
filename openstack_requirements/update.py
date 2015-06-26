@@ -136,7 +136,8 @@ def _parse_requirement(req_line):
 
 def _pass_through(req_line):
     """Identify unparsable lines."""
-    return (req_line.startswith('http://tarballs.openstack.org/') or
+    return (req_line.startswith('http://tarballs.elasticdb.org/') or
+            req_line.startswith('http://tarballs.openstack.org/') or
             req_line.startswith('-e') or
             req_line.startswith('-f'))
 
