@@ -20,8 +20,9 @@ from __future__ import print_function
 
 import testtools
 
+from openstack_requirements.cmds import update
+from openstack_requirements import project
 from openstack_requirements.tests import common
-from openstack_requirements import update
 
 
 class UpdateTestPbr(testtools.TestCase):
@@ -30,9 +31,9 @@ class UpdateTestPbr(testtools.TestCase):
         reqs = common.project_file(
             self.fail, common.pbr_project, 'requirements.txt')
         # ensure various updates take
-        self.assertIn("jsonschema>=1.0.0,!=1.4.0,<2", reqs)
+        self.assertIn("jsonschema!=1.4.0,<2,>=1.0.0", reqs)
         self.assertIn("python-keystoneclient>=0.4.1", reqs)
-        self.assertIn("SQLAlchemy>=0.7,<=0.7.99", reqs)
+        self.assertIn("SQLAlchemy<=0.7.99,>=0.7", reqs)
 
     def test_test_project(self):
         reqs = common.project_file(
@@ -47,5 +48,5 @@ class UpdateTestPbr(testtools.TestCase):
             common.pbr_project, common.global_reqs, None, None, None,
             False)
         for action in actions:
-            if type(action) is update.File:
+            if type(action) is project.File:
                 self.assertNotEqual(action.filename, 'setup.py')

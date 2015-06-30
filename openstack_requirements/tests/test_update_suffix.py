@@ -16,8 +16,9 @@ from __future__ import print_function
 
 import testtools
 
+from openstack_requirements.cmds import update
+from openstack_requirements import project
 from openstack_requirements.tests import common
-from openstack_requirements import update
 
 
 class UpdateTestWithSuffix(testtools.TestCase):
@@ -27,9 +28,9 @@ class UpdateTestWithSuffix(testtools.TestCase):
             self.fail, common.project_project, 'requirements.txt.global',
             suffix='global')
         # ensure various updates take
-        self.assertIn("jsonschema>=1.0.0,!=1.4.0,<2", reqs)
+        self.assertIn("jsonschema!=1.4.0,<2,>=1.0.0", reqs)
         self.assertIn("python-keystoneclient>=0.4.1", reqs)
-        self.assertIn("SQLAlchemy>=0.7,<=0.7.99", reqs)
+        self.assertIn("SQLAlchemy<=0.7.99,>=0.7", reqs)
 
     def test_project_with_oslo(self):
         reqs = common.project_file(
@@ -59,5 +60,5 @@ class UpdateTestWithSuffix(testtools.TestCase):
             common.oslo_project, common.global_reqs, 'global', None, None,
             False)
         for action in actions:
-            if type(action) is update.File:
+            if type(action) is project.File:
                 self.assertNotEqual(action.filename, 'setup.py')
