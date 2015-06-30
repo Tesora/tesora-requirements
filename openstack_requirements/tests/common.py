@@ -15,13 +15,14 @@ import shutil
 
 import fixtures
 
-from openstack_requirements import update
+from openstack_requirements.cmds import update
+from openstack_requirements import project
+from openstack_requirements import requirement
 
 
 def _file_to_list(fname):
     with open(fname) as f:
         content = list(map(lambda x: x.rstrip(), f.readlines()))
-        print(content)
         return content
 
 
@@ -83,10 +84,10 @@ class GlobalRequirements(fixtures.Fixture):
 # Static data for unit testing.
 def make_project(fixture):
     with fixture:
-        return update._read_project(fixture.root)
+        return project.read(fixture.root)
 
 
-global_reqs = update._parse_reqs(
+global_reqs = requirement.parse(
     open("openstack_requirements/tests/files/gr-base.txt", "rt").read())
 pbr_project = make_project(pbr_fixture)
 project_project = make_project(project_fixture)
@@ -95,13 +96,13 @@ oslo_project = make_project(oslo_fixture)
 
 
 def project_file(
-        fail, project, action_filename, suffix=None, softupdate=None,
+        fail, proj, action_filename, suffix=None, softupdate=None,
         non_std_reqs=False):
     actions = update._process_project(
-        project, global_reqs, suffix, softupdate, None,
+        proj, global_reqs, suffix, softupdate, None,
         non_std_reqs)
     for action in actions:
-        if type(action) is update.File:
+        if type(action) is project.File:
             if action.filename == action_filename:
                 return action.content.splitlines()
     fail('File %r not found in %r' % (action_filename, actions))

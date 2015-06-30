@@ -14,19 +14,19 @@
 
 from __future__ import print_function
 
-import io
 import StringIO
 import sys
 import textwrap
 
 import fixtures
-import pkg_resources
 import testscenarios
 import testtools
 from testtools import matchers
 
+from openstack_requirements.cmds import update
+from openstack_requirements import project
+from openstack_requirements import requirement
 from openstack_requirements.tests import common
-from openstack_requirements import update
 
 
 load_tests = testscenarios.load_tests_apply_scenarios
@@ -45,9 +45,9 @@ class SmokeTest(testtools.TestCase):
         update.main(['--source', global_env.root, self.project.root], capture)
         reqs = common._file_to_list(self.project.req_file)
         # ensure various updates take
-        self.assertIn("jsonschema>=1.0.0,!=1.4.0,<2", reqs)
+        self.assertIn("jsonschema!=1.4.0,<2,>=1.0.0", reqs)
         self.assertIn("python-keystoneclient>=0.4.1", reqs)
-        self.assertIn("SQLAlchemy>=0.7,<=0.7.99", reqs)
+        self.assertIn("SQLAlchemy<=0.7.99,>=0.7", reqs)
         expected = ('Version change for: greenlet, SQLAlchemy, eventlet, PasteDeploy, routes, WebOb, wsgiref, boto, kombu, pycrypto, python-swiftclient, lxml, jsonschema, python-keystoneclient\n'  # noqa
             """Updated %(project)s/requirements.txt:
     greenlet>=0.3.1                ->   greenlet>=0.3.2
@@ -80,9 +80,9 @@ class UpdateTest(testtools.TestCase):
         reqs = common.project_file(
             self.fail, common.project_project, 'requirements.txt')
         # ensure various updates take
-        self.assertIn("jsonschema>=1.0.0,!=1.4.0,<2", reqs)
+        self.assertIn("jsonschema!=1.4.0,<2,>=1.0.0", reqs)
         self.assertIn("python-keystoneclient>=0.4.1", reqs)
-        self.assertIn("SQLAlchemy>=0.7,<=0.7.99", reqs)
+        self.assertIn("SQLAlchemy<=0.7.99,>=0.7", reqs)
 
     def test_requirements_header(self):
         _REQS_HEADER = [
@@ -122,15 +122,16 @@ class UpdateTest(testtools.TestCase):
             common.oslo_project, common.global_reqs, None, None, None,
             False)
         for action in actions:
-            if type(action) is update.File:
+            if type(action) is project.File:
                 self.assertNotEqual(action.filename, 'setup.py')
 
     # These are tests which don't need to run the project update in advance
     def test_requirement_not_in_global(self):
-        with testtools.ExpectedException(Exception):
-            update._process_project(
-                common.bad_project, common.global_reqs, None, None, None,
-                False)
+        actions = update._process_project(
+            common.bad_project, common.global_reqs, None, None, None, False)
+        errors = [a for a in actions if type(a) is project.Error]
+        msg = u"'thisisnotarealdepedency' is not in global-requirements.txt"
+        self.assertEqual([project.Error(message=msg)], errors)
 
     def test_requirement_not_in_global_non_fatal(self):
         reqs = common.project_file(
@@ -150,7 +151,7 @@ class UpdateTest(testtools.TestCase):
             common.project_project, common.global_reqs, None, None, None,
             False)
         capture = StringIO.StringIO()
-        update._write_project(
+        project.write(
             common.project_project, actions, capture, False, True)
         expected = ('Version change for: greenlet, SQLAlchemy, eventlet, PasteDeploy, routes, WebOb, wsgiref, boto, kombu, pycrypto, python-swiftclient, lxml, jsonschema, python-keystoneclient\n'  # noqa
             """Updated %(project)s/requirements.txt:
@@ -182,7 +183,7 @@ Updated %(project)s/test-requirements.txt:
             common.project_project, common.global_reqs, None, None, None,
             False)
         capture = StringIO.StringIO()
-        update._write_project(
+        project.write(
             common.project_project, actions, capture, True, True)
         expected = ("""Syncing %(project)s/requirements.txt
 Version change for: greenlet, SQLAlchemy, eventlet, PasteDeploy, routes, WebOb, wsgiref, boto, kombu, pycrypto, python-swiftclient, lxml, jsonschema, python-keystoneclient\n"""  # noqa
@@ -213,69 +214,6 @@ Syncing setup.py
         self.assertEqual(expected, capture.getvalue())
 
 
-class TestReadProject(testtools.TestCase):
-
-    def test_pbr(self):
-        root = self.useFixture(common.pbr_fixture).root
-        project = update._read_project(root)
-        self.expectThat(project['root'], matchers.Equals(root))
-        setup_py = open(root + '/setup.py', 'rt').read()
-        self.expectThat(project['setup.py'], matchers.Equals(setup_py))
-        setup_cfg = open(root + '/setup.cfg', 'rt').read()
-        self.expectThat(project['setup.cfg'], matchers.Equals(setup_cfg))
-        self.expectThat(
-            project['requirements'],
-            matchers.KeysEqual('requirements.txt', 'test-requirements.txt'))
-
-    def test_no_setup_py(self):
-        root = self.useFixture(fixtures.TempDir()).path
-        project = update._read_project(root)
-        self.expectThat(
-            project, matchers.Equals({'root': root, 'requirements': {}}))
-
-
-class TestWriteProject(testtools.TestCase):
-
-    def test_smoke(self):
-        stdout = io.StringIO()
-        root = self.useFixture(fixtures.TempDir()).path
-        project = {'root': root}
-        actions = [
-            update.File('foo', '123\n'),
-            update.File('bar', '456\n'),
-            update.Verbose(u'fred')]
-        update._write_project(project, actions, stdout, True)
-        foo = open(root + '/foo', 'rt').read()
-        self.expectThat(foo, matchers.Equals('123\n'))
-        bar = open(root + '/bar', 'rt').read()
-        self.expectThat(bar, matchers.Equals('456\n'))
-        self.expectThat(stdout.getvalue(), matchers.Equals('fred\n'))
-
-    def test_non_verbose(self):
-        stdout = io.StringIO()
-        root = self.useFixture(fixtures.TempDir()).path
-        project = {'root': root}
-        actions = [update.Verbose(u'fred')]
-        update._write_project(project, actions, stdout, False)
-        self.expectThat(stdout.getvalue(), matchers.Equals(''))
-
-    def test_bad_action(self):
-        root = self.useFixture(fixtures.TempDir()).path
-        stdout = io.StringIO()
-        project = {'root': root}
-        actions = [('foo', 'bar')]
-        with testtools.ExpectedException(Exception):
-            update._write_project(project, actions, stdout, True)
-
-    def test_stdout(self):
-        stdout = io.StringIO()
-        root = self.useFixture(fixtures.TempDir()).path
-        project = {'root': root}
-        actions = [update.StdOut(u'fred\n')]
-        update._write_project(project, actions, stdout, True)
-        self.expectThat(stdout.getvalue(), matchers.Equals('fred\n'))
-
-
 class TestMain(testtools.TestCase):
 
     def test_smoke(self):
@@ -293,8 +231,7 @@ class TestMain(testtools.TestCase):
 
         with fixtures.EnvironmentVariable('NON_STANDARD_REQS', '1'):
             update.main(
-                ['--source', '/dev/null', '/dev/zero'],
-                _worker=check_params)
+                ['--source', '/dev/null', '/dev/zero'], _worker=check_params)
 
     def test_suffix(self):
         def check_params(
@@ -303,52 +240,6 @@ class TestMain(testtools.TestCase):
             self.expectThat(suffix, matchers.Equals('global'))
 
         update.main(['-o', 'global', '/dev/zero'], _worker=check_params)
-
-
-class TestParseRequirement(testtools.TestCase):
-
-    scenarios = [
-        ('package', dict(
-         line='swift',
-         req=update.Requirement('swift', '', ''))),
-        ('specifier', dict(
-         line='alembic>=0.4.1',
-         req=update.Requirement('alembic', '>=0.4.1', ''))),
-        ('specifiers', dict(
-         line='alembic>=0.4.1,!=1.1.8',
-         req=update.Requirement('alembic', '!=1.1.8,>=0.4.1', ''))),
-        ('comment-only', dict(
-         line='# foo',
-         req=update.Requirement('', '', '# foo'))),
-        ('comment', dict(
-         line='Pint>=0.5  # BSD',
-         req=update.Requirement('Pint', '>=0.5', '# BSD'))),
-        ('comment-with-semicolon', dict(
-         line='Pint>=0.5  # BSD;fred',
-         req=update.Requirement('Pint', '>=0.5', '# BSD;fred'))),
-        ('case', dict(
-         line='Babel>=1.3',
-         req=update.Requirement('Babel', '>=1.3', ''))),
-        ('markers', dict(
-         line="pywin32;sys_platform=='win32'",
-         req=update.Requirement('pywin32', '', ";sys_platform=='win32'")))]
-
-    def test_parse(self):
-        parsed = update._parse_requirement(self.line)
-        self.assertEqual(self.req, parsed)
-
-
-class TestParseRequirementFailures(testtools.TestCase):
-
-    scenarios = [
-        ('url', dict(line='http://tarballs.openstack.org/oslo.config/'
-                          'oslo.config-1.2.0a3.tar.gz#egg=oslo.config')),
-        ('-e', dict(line='-e git+https://foo.com#egg=foo')),
-        ('-f', dict(line='-f http://tarballs.openstack.org/'))]
-
-    def test_does_not_parse(self):
-        with testtools.ExpectedException(pkg_resources.RequirementParseError):
-            update._parse_requirement(self.line)
 
 
 class TestSyncRequirementsFile(testtools.TestCase):
@@ -361,24 +252,22 @@ class TestSyncRequirementsFile(testtools.TestCase):
         project_content = textwrap.dedent("""\
             foo
             """)
-        global_reqs = update._parse_reqs(global_content)
-        project_reqs = list(update._content_to_reqs(project_content))
-        actions = update._sync_requirements_file(
-            global_reqs, project_reqs, 'f', False, False, 'f', False)
-        self.assertEqual(update.File('f', textwrap.dedent("""\
-# The order of packages is significant, because pip processes them in the order
-# of appearance. Changing the order has an impact on the overall integration
-# process, which may cause wedges in the gate later.
-foo<2;python_version=='2.7'
-foo>1;python_version!='2.7'
-""")), actions[1])
-        self.assertEqual(update.StdOut(
+        global_reqs = requirement.parse(global_content)
+        project_reqs = list(requirement.to_reqs(project_content))
+        actions, reqs = update._sync_requirements_file(
+            global_reqs, project_reqs, 'f', False, False, False)
+        self.assertEqual(requirement.Requirements([
+            requirement.Requirement('foo', '<2', "python_version=='2.7'", ''),
+            requirement.Requirement(
+                'foo', '>1', "python_version!='2.7'", '')]),
+            reqs)
+        self.assertEqual(project.StdOut(
             "    foo                            "
-            "->   foo<2;python_version=='2.7'\n"), actions[4])
-        self.assertEqual(update.StdOut(
+            "->   foo<2;python_version=='2.7'\n"), actions[2])
+        self.assertEqual(project.StdOut(
             "                                   "
-            "->   foo>1;python_version!='2.7'\n"), actions[5])
-        self.assertThat(actions, matchers.HasLength(6))
+            "->   foo>1;python_version!='2.7'\n"), actions[3])
+        self.assertThat(actions, matchers.HasLength(4))
 
     def test_multiple_lines_separated_in_project_nochange(self):
         global_content = textwrap.dedent("""\
@@ -390,19 +279,16 @@ foo>1;python_version!='2.7'
             # mumbo gumbo
             foo>1;python_version!='2.7'
             """)
-        global_reqs = update._parse_reqs(global_content)
-        project_reqs = list(update._content_to_reqs(project_content))
-        actions = update._sync_requirements_file(
-            global_reqs, project_reqs, 'f', False, False, 'f', False)
-        self.assertEqual(update.File('f', textwrap.dedent("""\
-# The order of packages is significant, because pip processes them in the order
-# of appearance. Changing the order has an impact on the overall integration
-# process, which may cause wedges in the gate later.
-foo<2;python_version=='2.7'
-foo>1;python_version!='2.7'
-# mumbo gumbo
-""")), actions[1])
-        self.assertThat(actions, matchers.HasLength(2))
+        global_reqs = requirement.parse(global_content)
+        project_reqs = list(requirement.to_reqs(project_content))
+        actions, reqs = update._sync_requirements_file(
+            global_reqs, project_reqs, 'f', False, False, False)
+        self.assertEqual(requirement.Requirements([
+            requirement.Requirement('foo', '<2', "python_version=='2.7'", ''),
+            requirement.Requirement('foo', '>1', "python_version!='2.7'", ''),
+            requirement.Requirement('', '', '', "# mumbo gumbo")]),
+            reqs)
+        self.assertThat(actions, matchers.HasLength(0))
 
     def test_multiple_lines_separated_in_project(self):
         global_content = textwrap.dedent("""\
@@ -414,25 +300,22 @@ foo>1;python_version!='2.7'
             # mumbo gumbo
             foo>0.9;python_version!='2.7'
             """)
-        global_reqs = update._parse_reqs(global_content)
-        project_reqs = list(update._content_to_reqs(project_content))
-        actions = update._sync_requirements_file(
-            global_reqs, project_reqs, 'f', False, False, 'f', False)
-        self.assertEqual(update.File('f', textwrap.dedent("""\
-# The order of packages is significant, because pip processes them in the order
-# of appearance. Changing the order has an impact on the overall integration
-# process, which may cause wedges in the gate later.
-foo<2;python_version=='2.7'
-foo>1;python_version!='2.7'
-# mumbo gumbo
-""")), actions[1])
-        self.assertEqual(update.StdOut(
+        global_reqs = requirement.parse(global_content)
+        project_reqs = list(requirement.to_reqs(project_content))
+        actions, reqs = update._sync_requirements_file(
+            global_reqs, project_reqs, 'f', False, False, False)
+        self.assertEqual(requirement.Requirements([
+            requirement.Requirement('foo', '<2', "python_version=='2.7'", ''),
+            requirement.Requirement('foo', '>1', "python_version!='2.7'", ''),
+            requirement.Requirement('', '', '', "# mumbo gumbo")]),
+            reqs)
+        self.assertEqual(project.StdOut(
             "    foo<1.8;python_version=='2.7'  ->   "
-            "foo<2;python_version=='2.7'\n"), actions[4])
-        self.assertEqual(update.StdOut(
+            "foo<2;python_version=='2.7'\n"), actions[2])
+        self.assertEqual(project.StdOut(
             "    foo>0.9;python_version!='2.7'  ->   "
-            "foo>1;python_version!='2.7'\n"), actions[5])
-        self.assertThat(actions, matchers.HasLength(6))
+            "foo>1;python_version!='2.7'\n"), actions[3])
+        self.assertThat(actions, matchers.HasLength(4))
 
     def test_multiple_lines_nochange(self):
         global_content = textwrap.dedent("""\
@@ -443,18 +326,16 @@ foo>1;python_version!='2.7'
             foo<2;python_version=='2.7'
             foo>1;python_version!='2.7'
             """)
-        global_reqs = update._parse_reqs(global_content)
-        project_reqs = list(update._content_to_reqs(project_content))
-        actions = update._sync_requirements_file(
-            global_reqs, project_reqs, 'f', False, False, 'f', False)
-        self.assertEqual(update.File('f', textwrap.dedent("""\
-# The order of packages is significant, because pip processes them in the order
-# of appearance. Changing the order has an impact on the overall integration
-# process, which may cause wedges in the gate later.
-foo<2;python_version=='2.7'
-foo>1;python_version!='2.7'
-""")), actions[1])
-        self.assertThat(actions, matchers.HasLength(2))
+        global_reqs = requirement.parse(global_content)
+        project_reqs = list(requirement.to_reqs(project_content))
+        actions, reqs = update._sync_requirements_file(
+            global_reqs, project_reqs, 'f', False, False, False)
+        self.assertEqual(requirement.Requirements([
+            requirement.Requirement('foo', '<2', "python_version=='2.7'", ''),
+            requirement.Requirement(
+                'foo', '>1', "python_version!='2.7'", '')]),
+            reqs)
+        self.assertThat(actions, matchers.HasLength(0))
 
     def test_single_global_multiple_in_project(self):
         global_content = textwrap.dedent("""\
@@ -464,18 +345,47 @@ foo>1;python_version!='2.7'
             foo<2;python_version=='2.7'
             foo>1;python_version!='2.7'
             """)
-        global_reqs = update._parse_reqs(global_content)
-        project_reqs = list(update._content_to_reqs(project_content))
-        actions = update._sync_requirements_file(
-            global_reqs, project_reqs, 'f', False, False, 'f', False)
-        self.assertEqual(update.File('f', textwrap.dedent("""\
-# The order of packages is significant, because pip processes them in the order
-# of appearance. Changing the order has an impact on the overall integration
-# process, which may cause wedges in the gate later.
-foo>1
-""")), actions[1])
-        self.assertEqual(update.StdOut(
-            "    foo<2;python_version=='2.7'    ->   foo>1\n"), actions[4])
-        self.assertEqual(update.StdOut(
-            "    foo>1;python_version!='2.7'    ->   \n"), actions[5])
-        self.assertThat(actions, matchers.HasLength(6))
+        global_reqs = requirement.parse(global_content)
+        project_reqs = list(requirement.to_reqs(project_content))
+        actions, reqs = update._sync_requirements_file(
+            global_reqs, project_reqs, 'f', False, False, False)
+        self.assertEqual(requirement.Requirements([
+            requirement.Requirement('foo', '>1', "", '')]),
+            reqs)
+        self.assertEqual(project.StdOut(
+            "    foo<2;python_version=='2.7'    ->   foo>1\n"), actions[2])
+        self.assertEqual(project.StdOut(
+            "    foo>1;python_version!='2.7'    ->   \n"), actions[3])
+        self.assertThat(actions, matchers.HasLength(4))
+
+
+class TestCopyRequires(testtools.TestCase):
+
+    def test_extras_no_change(self):
+        global_content = textwrap.dedent(u"""\
+            foo<2;python_version=='2.7' # BSD
+            foo>1;python_version!='2.7'
+            freddy
+            """)
+        setup_cfg = textwrap.dedent(u"""\
+            [metadata]
+            name = openstack.requirements
+
+            [extras]
+            test =
+              foo<2:python_version=='2.7' # BSD
+              foo>1:python_version!='2.7'
+            opt =
+              freddy
+            """)
+        proj = {}
+        proj['root'] = '/dev/null'
+        proj['requirements'] = {}
+        proj['setup.cfg'] = setup_cfg
+        global_reqs = requirement.parse(global_content)
+        actions = update._copy_requires(
+            u'', False, False, proj, global_reqs, False)
+        self.assertEqual([
+            project.Verbose('Syncing extra [opt]'),
+            project.Verbose('Syncing extra [test]'),
+            project.File('setup.cfg', setup_cfg)], actions)
