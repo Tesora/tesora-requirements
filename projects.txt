@@ -92,6 +92,7 @@ openstack/sahara-image-elements
 openstack/stevedore
 openstack/swift
 openstack/taskflow
+openstack/tempest
 openstack/tempest-lib
 openstack/tooz
 openstack/training-guides
