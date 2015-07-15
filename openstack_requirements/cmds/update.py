@@ -62,7 +62,7 @@ except ImportError:
     pass
 
 setuptools.setup(
-    setup_requires=['pbr'],
+    setup_requires=['pbr>=1.3'],
     pbr=True)
 """
 
@@ -111,7 +111,7 @@ def _sync_requirements_file(
         elif req is None:
             # Unparsable lines.
             output_requirements.append(
-                requirement.Requirement('', '', '', req_line))
+                requirement.Requirement('', '', '', '', req_line.rstrip()))
             continue
         elif not req.package:
             # Comment-only lines

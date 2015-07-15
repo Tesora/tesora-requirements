@@ -24,7 +24,8 @@ def edit(reqs, name, replacement):
     if not replacement:
         reqs.pop(name, None)
     else:
-        reqs[name] = [(requirement.Requirement('', '', '', replacement), '')]
+        reqs[name] = [
+            (requirement.Requirement('', '', '', '', replacement), '')]
     result = []
     for entries in reqs.values():
         for entry, _ in entries:
@@ -64,7 +65,7 @@ def main(argv=None, stdout=None):
     _validate_options(options, args)
     args = args + [""]
     content = open(args[0], 'rt').read()
-    reqs = requirement.parse(content)
+    reqs = requirement.parse(content, permit_urls=True)
     out_reqs = edit(reqs, args[1], args[2])
     out = requirement.to_content(out_reqs, prefix=False)
     with open(args[0] + '.tmp', 'wt') as f:
