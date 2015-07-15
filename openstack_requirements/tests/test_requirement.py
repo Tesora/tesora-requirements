@@ -22,39 +22,58 @@ load_tests = testscenarios.load_tests_apply_scenarios
 
 class TestParseRequirement(testtools.TestCase):
 
-    scenarios = [
+    dist_scenarios = [
         ('package', dict(
          line='swift',
-         req=requirement.Requirement('swift', '', '', ''))),
+         req=requirement.Requirement('swift', '', '', '', ''))),
         ('specifier', dict(
          line='alembic>=0.4.1',
-         req=requirement.Requirement('alembic', '>=0.4.1', '', ''))),
+         req=requirement.Requirement('alembic', '', '>=0.4.1', '', ''))),
         ('specifiers', dict(
          line='alembic>=0.4.1,!=1.1.8',
-         req=requirement.Requirement('alembic', '!=1.1.8,>=0.4.1', '', ''))),
+         req=requirement.Requirement('alembic', '', '!=1.1.8,>=0.4.1', '',
+                                     ''))),
         ('comment-only', dict(
          line='# foo',
-         req=requirement.Requirement('', '', '', '# foo'))),
+         req=requirement.Requirement('', '', '', '', '# foo'))),
         ('comment', dict(
          line='Pint>=0.5  # BSD',
-         req=requirement.Requirement('Pint', '>=0.5', '', '# BSD'))),
+         req=requirement.Requirement('Pint', '', '>=0.5', '', '# BSD'))),
         ('comment-with-semicolon', dict(
          line='Pint>=0.5  # BSD;fred',
-         req=requirement.Requirement('Pint', '>=0.5', '', '# BSD;fred'))),
+         req=requirement.Requirement('Pint', '', '>=0.5', '', '# BSD;fred'))),
         ('case', dict(
          line='Babel>=1.3',
-         req=requirement.Requirement('Babel', '>=1.3', '', ''))),
+         req=requirement.Requirement('Babel', '', '>=1.3', '', ''))),
         ('markers', dict(
          line="pywin32;sys_platform=='win32'",
-         req=requirement.Requirement('pywin32', '', "sys_platform=='win32'",
-                                     ''))),
+         req=requirement.Requirement('pywin32', '', '',
+                                     "sys_platform=='win32'", ''))),
         ('markers-with-comment', dict(
          line="Sphinx<=1.2; python_version=='2.7'# Sadface",
-         req=requirement.Requirement('Sphinx', '<=1.2',
+         req=requirement.Requirement('Sphinx', '', '<=1.2',
                                      "python_version=='2.7'", '# Sadface')))]
+    url_scenarios = [
+        ('url', dict(
+         line='file:///path/to/thing#egg=thing',
+         req=requirement.Requirement('thing', 'file:///path/to/thing', '', '',
+                                     ''),
+         permit_urls=True)),
+        ('url-comment', dict(
+         line='file:///path/to/thing#egg=thing # http://altpath#egg=boo',
+         req=requirement.Requirement('thing', 'file:///path/to/thing', '', '',
+                                     '# http://altpath#egg=boo'),
+         permit_urls=True)),
+        ('editable', dict(
+         line='-e file:///path/to/bar#egg=bar',
+         req=requirement.Requirement('bar', '-e file:///path/to/bar', '', '',
+                                     ''),
+         permit_urls=True))]
+    scenarios = dist_scenarios + url_scenarios
 
     def test_parse(self):
-        parsed = requirement.parse_line(self.line)
+        parsed = requirement.parse_line(
+            self.line, permit_urls=getattr(self, 'permit_urls', False))
         self.assertEqual(self.req, parsed)
 
 
@@ -76,9 +95,37 @@ class TestToContent(testtools.TestCase):
     def test_smoke(self):
         reqs = requirement.to_content(requirement.Requirements(
             [requirement.Requirement(
-             'foo', '<=1', "python_version=='2.7'", '# BSD')]),
+             'foo', '', '<=1', "python_version=='2.7'", '# BSD')]),
             marker_sep='!')
         self.assertEqual(
             ''.join(requirement._REQS_HEADER
                     + ["foo<=1!python_version=='2.7' # BSD\n"]),
             reqs)
+
+    def test_location(self):
+        reqs = requirement.to_content(requirement.Requirements(
+            [requirement.Requirement(
+             'foo', 'file://foo', '', "python_version=='2.7'", '# BSD')]))
+        self.assertEqual(
+            ''.join(requirement._REQS_HEADER
+                    + ["file://foo#egg=foo;python_version=='2.7' # BSD\n"]),
+            reqs)
+
+
+class TestToReqs(testtools.TestCase):
+
+    def test_editable(self):
+        line = '-e file:///foo#egg=foo'
+        reqs = list(requirement.to_reqs(line, permit_urls=True))
+        req = requirement.Requirement('foo', '-e file:///foo', '', '', '')
+        self.assertEqual(reqs, [(req, line)])
+
+    def test_urls(self):
+        line = 'file:///foo#egg=foo'
+        reqs = list(requirement.to_reqs(line, permit_urls=True))
+        req = requirement.Requirement('foo', 'file:///foo', '', '', '')
+        self.assertEqual(reqs, [(req, line)])
+
+    def test_not_urls(self):
+        with testtools.ExpectedException(pkg_resources.RequirementParseError):
+            list(requirement.to_reqs('file:///foo#egg=foo'))

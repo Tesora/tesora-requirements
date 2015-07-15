@@ -12,6 +12,7 @@
 
 import io
 import os
+import textwrap
 
 import fixtures
 import testscenarios
@@ -38,6 +39,25 @@ class SmokeTest(testtools.TestCase):
         content = open(constraints_path, 'rt').read()
         self.assertEqual('-e /path/to/foo\nbar===1\nquux==3\n', content)
 
+    def test_edit_paths(self):
+        stdout = io.StringIO()
+        tmpdir = self.useFixture(fixtures.TempDir()).path
+        constraints_path = os.path.join(tmpdir, 'name.txt')
+        with open(constraints_path, 'wt') as f:
+            f.write(textwrap.dedent("""\
+                file:///path/to/foo#egg=foo
+                -e file:///path/to/bar#egg=bar
+                """))
+        rv = edit.main(
+            [constraints_path, 'foo', '--', '-e file:///path/to/foo#egg=foo'],
+            stdout)
+        self.assertEqual(0, rv)
+        content = open(constraints_path, 'rt').read()
+        self.assertEqual(textwrap.dedent("""\
+            -e file:///path/to/foo#egg=foo
+            -e file:///path/to/bar#egg=bar
+            """), content)
+
 
 class TestEdit(testtools.TestCase):
 
@@ -45,7 +65,7 @@ class TestEdit(testtools.TestCase):
         reqs = {}
         res = edit.edit(reqs, 'foo', 'foo==1.2')
         self.assertEqual(requirement.Requirements(
-            [requirement.Requirement('', '', '', 'foo==1.2')]), res)
+            [requirement.Requirement('', '', '', '', 'foo==1.2')]), res)
 
     def test_delete(self):
         reqs = requirement.parse('foo==1.2\n')
@@ -56,10 +76,10 @@ class TestEdit(testtools.TestCase):
         reqs = requirement.parse('foo==1.2\n')
         res = edit.edit(reqs, 'foo', 'foo==1.3')
         self.assertEqual(requirement.Requirements(
-            [requirement.Requirement('', '', '', 'foo==1.3')]), res)
+            [requirement.Requirement('', '', '', '', 'foo==1.3')]), res)
 
     def test_replace_many(self):
         reqs = requirement.parse('foo==1.2;p\nfoo==1.3;q')
         res = edit.edit(reqs, 'foo', 'foo==1.3')
         self.assertEqual(requirement.Requirements(
-            [requirement.Requirement('', '', '', 'foo==1.3')]), res)
+            [requirement.Requirement('', '', '', '', 'foo==1.3')]), res)
