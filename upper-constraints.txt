@@ -116,7 +116,7 @@ functools32===3.2.3.post1;python_version=='2.7'
 futures===3.0.3
 futurist===0.1.2
 gabbi===1.0.0
-glance-store===0.6.0
+glance-store===0.7.1
 greenlet===0.4.7
 happybase===0.9;python_version=='2.7'
 hgtools===6.3
@@ -140,7 +140,7 @@ kerberos===1.1.1;python_version=='2.7'
 keyring===5.3
 keystonemiddleware===2.1.0
 kombu===3.0.26
-ldap3==0.9.8.7
+ldap3===0.9.8.7
 ldappool===1.0
 libvirt-python===1.2.16
 linecache2===1.0.0
@@ -167,7 +167,7 @@ openstack.nose-plugin===0.11
 openstackdocstheme===1.1.0
 ordereddict===1.1
 os-apply-config===0.1.31
-os-brick===0.2.0
+os-brick===0.3.2
 os-client-config===1.4.0
 os-cloud-config===0.2.9
 os-collect-config===0.1.35
@@ -175,7 +175,7 @@ os-net-config===0.1.4
 os-refresh-config===0.1.10
 os-testr===0.2.0
 oslo.cache===0.3.0
-oslo.concurrency===2.2.0
+oslo.concurrency===2.3.0
 oslo.config===1.14.0
 oslo.context===0.4.0
 oslo.db===2.1.0
@@ -269,6 +269,7 @@ restructuredtext-lint===0.12.2
 retrying===1.3.3
 rfc3986===0.2.2
 rtslib-fb===2.1.57
+ryu===3.23.2
 selenium===2.46.0
 semantic-version===2.4.2
 seqdiag===0.9.5
@@ -288,7 +289,7 @@ stevedore===1.6.0
 suds-jurko===0.6
 sysv-ipc===0.6.8
 tablib===0.10.0
-taskflow===1.15.0
+taskflow===1.16.0
 tempest-lib===0.6.1
 termcolor===1.1.0
 testrepository===0.0.20
