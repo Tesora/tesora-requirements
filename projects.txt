@@ -19,6 +19,7 @@ openstack/glance
 openstack/glance_store
 openstack/heat
 openstack/heat-translator
+openstack/horizon
 openstack/ironic
 openstack/ironic-inspector
 openstack/ironic-lib
@@ -86,6 +87,7 @@ openstack/python-novaclient
 openstack/python-openstackclient
 openstack/python-saharaclient
 openstack/python-swiftclient
+openstack/python-troveclient
 openstack/python-tuskarclient
 openstack/python-zaqarclient
 openstack/rally
@@ -100,6 +102,7 @@ openstack/taskflow
 openstack/tempest
 openstack/tempest-lib
 openstack/tooz
+openstack/trove
 openstack/training-guides
 openstack/tuskar
 openstack/tuskar-ui
@@ -112,3 +115,6 @@ stackforge/python-openstacksdk
 stackforge/python-senlinclient
 stackforge/python-solumclient
 stackforge/senlin
+tesora/tesora-horizon
+tesora/tesora-pythontroveclient
+tesora/tesora-trove
