@@ -8,6 +8,7 @@ openstack/ceilometermiddleware
 openstack/cinder
 openstack/cliff
 openstack/congress
+openstack/cue
 openstack/debtcollector
 openstack/designate
 openstack/designate-dashboard
@@ -34,7 +35,10 @@ openstack/mox3
 openstack/murano
 openstack/murano-dashboard
 openstack/networking-odl
+openstack/networking-onos
 openstack/networking-ovn
+openstack/networking-sfc
+openstack/networking-bgpvpn
 openstack/neutron
 openstack/neutron-fwaas
 openstack/neutron-lbaas
@@ -72,6 +76,7 @@ openstack/python-barbicanclient
 openstack/python-ceilometerclient
 openstack/python-cinderclient
 openstack/python-congressclient
+openstack/python-cueclient
 openstack/python-designateclient
 openstack/python-glanceclient
 openstack/python-heatclient

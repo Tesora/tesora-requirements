@@ -15,7 +15,7 @@ cassandra-driver>=2.1.4 # Apache-2.0
 ceilometermiddleware>=0.1.0
 cachetools>=1.0.0 # MIT License
 cffi
-cliff>=1.13.0  # Apache-2.0
+cliff>=1.14.0  # Apache-2.0
 cmd2>=0.6.7
 PuLP>=1.0.4
 contextlib2>=0.4.0 # PSF License
@@ -31,7 +31,8 @@ django-babel>=0.3.4
 django-bootstrap-form
 django_compressor>=1.4
 django_openstack_auth>=1.1.7,!=1.1.8
-dnspython>=1.12.0
+dnspython>=1.12.0;python_version<'3.0'
+dnspython3>=1.12.0;python_version>='3.0'
 dogpile.cache>=0.5.4
 elasticsearch>=1.3.0
 enum34;python_version=='2.7' or python_version=='2.6'
@@ -63,11 +64,11 @@ ldap3>=0.9.8.2  # LGPLv3
 libvirt-python>=1.2.5                   # LGPLv2+
 lxml>=2.3
 Mako>=0.4.0
-monotonic>=0.1                          # Apache-2.0
+monotonic>=0.3                          # Apache-2.0
 msgpack-python>=0.4.0
 netaddr>=0.7.12
 netifaces>=0.10.4
-networkx>=1.8
+networkx>=1.10
 oauthlib>=0.6
 openstackdocstheme>=1.0.3
 ordereddict
@@ -75,9 +76,9 @@ oslo.cache>=0.3.0  # Apache-2.0
 oslo.config>=1.11.0  # Apache-2.0
 oslo.concurrency>=2.3.0         # Apache-2.0
 oslo.context>=0.2.0                     # Apache-2.0
-oslo.db>=1.12.0  # Apache-2.0
+oslo.db>=2.0  # Apache-2.0
 oslo.i18n>=1.5.0  # Apache-2.0
-oslo.log>=1.6.0  # Apache-2.0
+oslo.log>=1.8.0  # Apache-2.0
 oslo.messaging>=1.16.0,!=1.17.0,!=1.17.1 # Apache-2.0
 oslo.middleware>=2.4.0                  # Apache-2.0
 oslo.policy>=0.5.0  # Apache-2.0
@@ -87,7 +88,7 @@ oslo.serialization>=1.4.0               # Apache-2.0
 oslo.service>=0.1.0                     # Apache-2.0
 oslo.utils>=1.9.0                       # Apache-2.0
 oslo.vmware>=1.16.0                     # Apache-2.0
-oslo.versionedobjects>=0.3.0,!=0.5.0
+oslo.versionedobjects>=0.6.0
 osprofiler>=0.3.0                       # Apache-2.0
 os-apply-config
 os-brick>=0.3.2                         # Apache-2.0
@@ -103,7 +104,7 @@ Parsley
 passlib
 Paste
 PasteDeploy>=1.5.0
-pbr>=1.3,<2.0
+pbr>=1.4,<2.0
 pecan>=0.8.0
 pexpect>=3.1,!=3.3 # ISC License
 Pillow>=2.4.0 # MIT
@@ -129,6 +130,7 @@ pyngus>=1.3.1;python_version=='2.7'  # Apache 2.0 License
 
 pyOpenSSL>=0.14
 pyparsing>=2.0.1
+pyroute2>=0.3.10  # Apache-2.0 (+ dual licensed GPL2)
 pysnmp>=4.2.1,<5.0.0
 pystache
 pysaml2>=2.4.0
@@ -146,17 +148,18 @@ python-glanceclient>=0.18.0
 python-ironic-inspector-client>=1.0.1
 python-ironicclient>=0.6.0
 python-keystoneclient>=1.6.0
+python-magnumclient>=0.2.1
 python-manilaclient>=1.0.4
-python-memcached>=1.48;python_version=='2.7' or python_version=='2.6'
+python-memcached>=1.56
 python-mistralclient>=1.0.0
 python-muranoclient>=0.5.6
-python-neutronclient>=2.3.11,<3
-python-novaclient>=2.22.0
+python-neutronclient>=2.6.0,<3
+python-novaclient>=2.26.0
 python-saharaclient>=0.9.0
 python-openstackclient>=1.5.0
 python-openstacksdk>=0.4.1
 python-swiftclient>=2.2.0
-python-troveclient>=1.0.9
+python-troveclient>=1.2.0
 python-tuskarclient>=0.1.17
 python-zaqarclient>=0.1.1
 python-dateutil>=2.4.2
@@ -177,6 +180,7 @@ ryu>=3.23.2 # Apache-2.0
 semantic_version>=2.3.1
 fasteners>=0.7  # Apache-2.0
 simplejson>=2.2.0
+singledispatch>=3.4.0.3
 six>=1.9.0
 sockjs-tornado>=1.0.0,<2.0.0
 SQLAlchemy>=0.9.7,<1.1.0
@@ -190,9 +194,10 @@ tempest-lib>=0.6.1
 tooz>=0.16.0 # Apache-2.0
 tripleo-image-elements
 urllib3>=1.8.3
+unicodecsv>=0.8.0
 warlock>=1.0.1,<2
 WebOb>=1.2.3
-websockify>=0.6.0,<0.7
+websockify>=0.6.0
 wheel
 wmi;sys_platform=='win32'
 WSME>=0.7
@@ -213,10 +218,10 @@ XStatic-jQuery>=1.7.2  # MIT License
 XStatic-JQuery.Bootstrap.Wizard>=1.0.0.1  # MIT License
 XStatic-JQuery-Migrate>=1.2.1.1  # MIT License
 XStatic-JQuery.quicksearch>=2.0.3.1  # MIT License
-XStatic-JQuery.TableSorter>=2.0.5b.0  # MIT License
+XStatic-JQuery.TableSorter>=2.14.5.1  # MIT License
 XStatic-jquery-ui>=1.10.1  # MIT License
 XStatic-JSEncrypt>=2.0.0.2  # MIT License
-XStatic-Magic-Search>=0.2.0.1  # Apache 2.0 License
+XStatic-Magic-Search>=0.2.5.1  # Apache 2.0 License
 XStatic-QUnit>=1.14.0.2  # MIT License
 XStatic-Rickshaw>=1.5.0  # BSD License (prior)
 XStatic-smart-table>=1.4.5.3  # MIT License
@@ -256,7 +261,7 @@ nosexcover
 openstack-doc-tools>=0.23
 openstack.nose_plugin>=0.7
 oslosphinx>=2.5.0  # Apache-2.0
-oslotest>=1.7.0  # Apache-2.0
+oslotest>=1.10.0  # Apache-2.0
 proboscis>=1.2.5.3
 psycopg2
 pysendfile>=2.0.0
