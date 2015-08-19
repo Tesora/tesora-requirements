@@ -34,6 +34,7 @@ openstack/manila
 openstack/mox3
 openstack/murano
 openstack/murano-dashboard
+openstack/networking-l2gw
 openstack/networking-odl
 openstack/networking-onos
 openstack/networking-ovn
@@ -114,6 +115,7 @@ openstack/tuskar-ui
 openstack/vmware-nsx
 openstack/zaqar
 stackforge/blazar-nova
+stackforge/networking-bagpipe-l2
 stackforge/nova-docker
 stackforge/python-blazarclient
 stackforge/python-openstacksdk
