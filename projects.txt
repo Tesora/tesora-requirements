@@ -126,3 +126,4 @@ stackforge/senlin
 tesora/tesora-horizon
 tesora/tesora-pythontroveclient
 tesora/tesora-trove
+stackforge/senlin-dashboard

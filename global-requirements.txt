@@ -74,14 +74,14 @@ oauthlib>=0.6
 openstackdocstheme>=1.0.3
 ordereddict
 oslo.cache>=0.4.0  # Apache-2.0
-oslo.config>=2.1.0  # Apache-2.0
+oslo.config>=2.3.0  # Apache-2.0
 oslo.concurrency>=2.3.0         # Apache-2.0
 oslo.context>=0.2.0                     # Apache-2.0
 oslo.db>=2.4.1  # Apache-2.0
 oslo.i18n>=1.5.0  # Apache-2.0
 oslo.log>=1.8.0  # Apache-2.0
 oslo.messaging>=1.16.0,!=1.17.0,!=1.17.1 # Apache-2.0
-oslo.middleware>=2.4.0,!=2.6.0           # Apache-2.0
+oslo.middleware>=2.6.1                  # Apache-2.0
 oslo.policy>=0.5.0  # Apache-2.0
 oslo.reports>=0.1.0  # Apache-2.0
 oslo.rootwrap>=2.0.0  # Apache-2.0
@@ -105,7 +105,7 @@ Parsley
 passlib
 Paste
 PasteDeploy>=1.5.0
-pbr>=1.4,<2.0
+pbr>=1.6,<2.0
 pecan>=1.0.0
 pexpect>=3.1,!=3.3 # ISC License
 Pillow>=2.4.0 # MIT
@@ -173,7 +173,7 @@ pywin32;sys_platform=='win32'
 qpid-python;python_version=='2.7'
 requests>=2.5.2
 requests-aws>=0.1.4    # BSD License (3 clause)
-requests-kerberos>=0.6;python_version=='2.7' # MIT
+requests-kerberos>=0.6;python_version=='2.7' or python_version=='2.6' # MIT
 rfc3986>=0.2.0  # Apache-2.0
 Routes>=1.12.3,!=2.0,!=2.1;python_version=='2.7'
 Routes>=1.12.3,!=2.0;python_version!='2.7'
