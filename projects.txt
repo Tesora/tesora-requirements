@@ -3,6 +3,7 @@ openstack-dev/pbr
 openstack/anchor
 openstack/automaton
 openstack/barbican
+openstack/castellan
 openstack/ceilometer
 openstack/ceilometermiddleware
 openstack/cinder
@@ -31,6 +32,9 @@ openstack/keystoneauth-saml2
 openstack/keystonemiddleware
 openstack/magnum
 openstack/manila
+openstack/mistral
+openstack/mistral-dashboard
+openstack/mistral-extra
 openstack/mox3
 openstack/murano
 openstack/murano-dashboard
@@ -88,6 +92,7 @@ openstack/python-keystoneclient
 openstack/python-keystoneclient-kerberos
 openstack/python-magnumclient
 openstack/python-manilaclient
+openstack/python-mistralclient
 openstack/python-muranoclient
 openstack/python-neutronclient
 openstack/python-novaclient
