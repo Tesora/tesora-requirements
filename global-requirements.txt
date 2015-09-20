@@ -59,7 +59,7 @@ jsonpath-rw-ext>=0.1.7
 jsonrpclib
 jsonschema>=2.0.0,<3.0.0,!=2.5.0
 kazoo>=2.2
-keystoneauth1
+keystoneauth1>=1.0.0
 keystonemiddleware>=2.0.0
 packaging>=15.2
 pyScss>=1.3.4  # MIT License
@@ -109,7 +109,7 @@ Parsley
 passlib>=1.6
 Paste
 PasteDeploy>=1.5.0
-pbr>=1.6,<2.0
+pbr>=1.6
 pecan>=1.0.0
 pexpect>=3.1,!=3.3 # ISC License
 Pillow>=2.4.0 # MIT
@@ -145,7 +145,7 @@ pysaml2>=2.4.0
 # is currently being made for neutron client because of the need
 # for an incompatible change in their next release.
 python-barbicanclient>=3.3.0
-python-ceilometerclient>=1.0.13
+python-ceilometerclient>=1.5.0
 python-cinderclient>=1.3.1
 python-congressclient>=1.0.0
 python-designateclient>=1.0.0
@@ -196,7 +196,7 @@ stevedore>=1.5.0  # Apache-2.0
 sysv_ipc>=0.6.8  # BSD License
 suds-jurko>=0.6
 taskflow>=1.16.0
-tempest-lib>=0.6.1
+tempest-lib>=0.8.0
 tooz>=1.19.0 # Apache-2.0
 tosca-parser>=0.1.0
 tripleo-image-elements
