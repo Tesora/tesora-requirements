@@ -2,6 +2,7 @@ openstack-dev/hacking
 openstack-dev/pbr
 openstack/anchor
 openstack/automaton
+openstack/bandit
 openstack/barbican
 openstack/castellan
 openstack/ceilometer
@@ -44,6 +45,7 @@ openstack/networking-ofagent
 openstack/networking-onos
 openstack/networking-ovn
 openstack/networking-sfc
+openstack/networking-vsphere
 openstack/networking-bgpvpn
 openstack/neutron
 openstack/neutron-fwaas
@@ -100,6 +102,7 @@ openstack/python-openstackclient
 openstack/python-saharaclient
 openstack/python-solumclient
 openstack/python-swiftclient
+openstack/python-tripleoclient
 openstack/python-troveclient
 openstack/python-tuskarclient
 openstack/python-zaqarclient
@@ -115,6 +118,7 @@ openstack/taskflow
 openstack/tempest
 openstack/tempest-lib
 openstack/tooz
+openstack/tripleo-common
 openstack/trove
 openstack/training-guides
 openstack/tuskar

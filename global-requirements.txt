@@ -32,7 +32,7 @@ django-babel>=0.3.4
 django-bootstrap-form
 django_compressor>=1.4
 django-formtools
-django_openstack_auth>=1.4.0
+django_openstack_auth>=2.0.0
 dnspython>=1.12.0;python_version<'3.0'
 dnspython3>=1.12.0;python_version>='3.0'
 dogpile.cache>=0.5.4
@@ -55,12 +55,12 @@ iso8601>=0.1.9
 Jinja2>=2.6  # BSD License (3 clause)
 jsonpatch>=1.1
 jsonpath-rw>=1.2.0,<2.0
-jsonpath-rw-ext>=0.1.7
-jsonrpclib
+jsonpath-rw-ext>=0.1.9
+jsonrpclib!=0.1.4
 jsonschema>=2.0.0,<3.0.0,!=2.5.0
 kazoo>=2.2
 keystoneauth1>=1.0.0
-keystonemiddleware>=2.0.0
+keystonemiddleware>=2.0.0,!=2.4.0
 packaging>=15.2
 pyScss>=1.3.4  # MIT License
 django-pyscss>=2.0.2  # BSD License (2 clause)
@@ -77,21 +77,21 @@ networkx>=1.10
 oauthlib>=0.6
 openstackdocstheme>=1.0.3
 ordereddict
-oslo.cache>=0.4.0  # Apache-2.0
+oslo.cache>=0.8.0  # Apache-2.0
 oslo.config>=2.3.0  # Apache-2.0
 oslo.concurrency>=2.3.0         # Apache-2.0
 oslo.context>=0.2.0                     # Apache-2.0
 oslo.db>=2.4.1  # Apache-2.0
 oslo.i18n>=1.5.0  # Apache-2.0
 oslo.log>=1.8.0  # Apache-2.0
-oslo.messaging>=1.16.0,!=1.17.0,!=1.17.1 # Apache-2.0
+oslo.messaging>=1.16.0,!=1.17.0,!=1.17.1,!=2.6.0,!=2.6.1 # Apache-2.0
 oslo.middleware>=2.8.0                  # Apache-2.0
 oslo.policy>=0.5.0  # Apache-2.0
-oslo.reports>=0.1.0  # Apache-2.0
+oslo.reports>=0.5.0  # Apache-2.0
 oslo.rootwrap>=2.0.0  # Apache-2.0
 oslo.serialization>=1.4.0               # Apache-2.0
-oslo.service>=0.7.0                     # Apache-2.0
-oslo.utils>=2.0.0                       # Apache-2.0
+oslo.service>=0.10.0                    # Apache-2.0
+oslo.utils>=2.4.0                       # Apache-2.0
 oslo.vmware>=1.16.0                     # Apache-2.0
 oslo.versionedobjects>=0.9.0
 osprofiler>=0.3.0                       # Apache-2.0
@@ -102,8 +102,9 @@ os-cloud-config
 os-collect-config
 os-net-config
 os-refresh-config
-os-testr>=0.1.0
-ovs>=2.4.0.dev0;python_version=='2.7'  # Apache-2.0
+os-testr>=0.4.1
+ovs>=2.4.0;python_version=='2.7'        # Apache-2.0
+os-win>=0.0.4                           # Apache-2.0
 paramiko>=1.13.0
 Parsley
 passlib>=1.6
@@ -112,7 +113,9 @@ PasteDeploy>=1.5.0
 pbr>=1.6
 pecan>=1.0.0
 pexpect>=3.1,!=3.3 # ISC License
-Pillow>=2.4.0 # MIT
+pika>=0.10.0
+pika-pool>=0.1.2
+Pillow>=2.4.0,<3.0.0 # MIT
 Pint>=0.5  # BSD
 pip>=6.0
 posix_ipc
@@ -124,7 +127,7 @@ pycadf>=1.1.0
 pycrypto>=2.6
 PyECLib==1.0.7                          # BSD
 pyghmi>=0.6.11
-pyinotify>=0.9.6 # MIT
+pyinotify>=0.9.6;sys_platform!='win32' and sys_platform!='darwin' and sys_platform!='sunos5' # MIT
 pykmip>=0.4.0  # Apache 2.0 License
 pymemcache>=1.2.9,!=1.3.0  # Apache 2.0 License
 pymongo>=3.0.2
@@ -132,7 +135,7 @@ PyMySQL>=0.6.2  # MIT License
 
 # NOTE(flaper87): This added 2 packages to `integration.sh`
 # uuid-dev and swig
-pyngus>=1.3.1;python_version=='2.7'  # Apache 2.0 License
+pyngus>=2.0.0  # Apache-2.0
 
 pyOpenSSL>=0.14
 pyparsing>=2.0.1
@@ -148,19 +151,19 @@ python-barbicanclient>=3.3.0
 python-ceilometerclient>=1.5.0
 python-cinderclient>=1.3.1
 python-congressclient>=1.0.0
-python-designateclient>=1.0.0
-python-heatclient>=0.3.0
+python-designateclient>=1.5.0
+python-heatclient>=0.6.0
 python-glanceclient>=0.18.0
 python-ironic-inspector-client>=1.0.1
 python-ironicclient>=0.8.0
-python-keystoneclient>=1.6.0
+python-keystoneclient>=1.6.0,!=1.8.0
 python-magnumclient>=0.2.1
 python-manilaclient>=1.3.0
 python-memcached>=1.56
 python-mistralclient>=1.0.0
-python-muranoclient>=0.7.0
+python-muranoclient>=0.7.1
 python-neutronclient>=2.6.0
-python-novaclient>=2.28.1
+python-novaclient>=2.29.0
 python-saharaclient>=0.10.0
 python-openstackclient>=1.5.0
 python-openstacksdk>=0.4.1
@@ -175,7 +178,8 @@ pyudev
 PyYAML>=3.1.0
 pywin32;sys_platform=='win32'
 qpid-python;python_version=='2.7'
-requests>=2.5.2
+reno>=0.1.1  # Apache2
+requests>=2.5.2,!=2.8.0
 requests-aws>=0.1.4    # BSD License (3 clause)
 requests-kerberos>=0.6;python_version=='2.7' or python_version=='2.6' # MIT
 rfc3986>=0.2.0  # Apache-2.0
@@ -196,14 +200,16 @@ stevedore>=1.5.0  # Apache-2.0
 sysv_ipc>=0.6.8  # BSD License
 suds-jurko>=0.6
 taskflow>=1.16.0
-tempest-lib>=0.8.0
+tempest-lib>=0.10.0
 tooz>=1.19.0 # Apache-2.0
 tosca-parser>=0.1.0
 tripleo-image-elements
 urllib3>=1.8.3
 unicodecsv>=0.8.0
 warlock>=1.0.1,<2
+weakrefmethod;python_version=='2.7' or python_version=='2.6' # PSF
 WebOb>=1.2.3
+websocket-client>=0.32.0 # LGPLv2+
 websockify>=0.6.1
 wheel
 wmi;sys_platform=='win32'
@@ -247,7 +253,7 @@ bashate>=0.2 # Apache-2.0
 cliff-tablib>=1.0
 coverage>=3.6
 demjson # GNU LGPL 3.0
-docker-py>=1.1.0  # Apache-2.0
+docker-py>=1.4.0  # Apache-2.0
 discover
 django-nose>=1.2
 doc8  # Apache-2.0
