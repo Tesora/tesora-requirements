@@ -134,14 +134,6 @@ openstack/tuskar
 openstack/tuskar-ui
 openstack/vmware-nsx
 openstack/zaqar
-stackforge/blazar-nova
-stackforge/networking-bagpipe-l2
-stackforge/nova-docker
-stackforge/python-blazarclient
-stackforge/python-openstacksdk
-stackforge/python-senlinclient
-stackforge/senlin
 tesora/tesora-horizon
 tesora/tesora-pythontroveclient
 tesora/tesora-trove
-stackforge/senlin-dashboard
