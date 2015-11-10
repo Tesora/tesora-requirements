@@ -26,9 +26,9 @@ ddt>=0.7.0
 debtcollector>=0.3.0  # Apache-2.0
 decorator>=3.4.0
 dib-utils  # Apache-2.0
-diskimage-builder>=0.1.20
-Django>=1.7,<1.9
-django-babel>=0.3.4
+diskimage-builder>=1.1.2
+Django>=1.8,<1.9
+django-babel>=0.4.0
 django-bootstrap-form
 django_compressor>=1.4
 django-formtools
@@ -49,7 +49,7 @@ greenlet>=0.3.2
 happybase>=0.5,!=0.7;python_version=='2.7'
 httplib2>=0.7.5
 influxdb>=2.2.0                       # MIT License
-ironic-lib>=0.1.0
+ironic-lib>=0.3.0
 ironic-discoverd>=1.0.0                # Apache-2.0
 iso8601>=0.1.9
 Jinja2>=2.6  # BSD License (3 clause)
@@ -78,20 +78,20 @@ oauthlib>=0.6
 openstackdocstheme>=1.0.3
 ordereddict
 oslo.cache>=0.8.0  # Apache-2.0
-oslo.config>=2.3.0  # Apache-2.0
+oslo.config>=2.6.0  # Apache-2.0
 oslo.concurrency>=2.3.0         # Apache-2.0
 oslo.context>=0.2.0                     # Apache-2.0
-oslo.db>=2.4.1  # Apache-2.0
+oslo.db>=3.0.0  # Apache-2.0
 oslo.i18n>=1.5.0  # Apache-2.0
 oslo.log>=1.8.0  # Apache-2.0
 oslo.messaging>=1.16.0,!=1.17.0,!=1.17.1,!=2.6.0,!=2.6.1 # Apache-2.0
 oslo.middleware>=2.8.0                  # Apache-2.0
 oslo.policy>=0.5.0  # Apache-2.0
-oslo.reports>=0.5.0  # Apache-2.0
+oslo.reports>=0.6.0  # Apache-2.0
 oslo.rootwrap>=2.0.0  # Apache-2.0
-oslo.serialization>=1.4.0               # Apache-2.0
+oslo.serialization>=1.10.0              # Apache-2.0
 oslo.service>=0.10.0                    # Apache-2.0
-oslo.utils>=2.4.0                       # Apache-2.0
+oslo.utils>=2.4.0,!=2.6.0               # Apache-2.0
 oslo.vmware>=1.16.0                     # Apache-2.0
 oslo.versionedobjects>=0.9.0
 osprofiler>=0.3.0                       # Apache-2.0
@@ -154,7 +154,7 @@ python-congressclient>=1.0.0
 python-designateclient>=1.5.0
 python-heatclient>=0.6.0
 python-glanceclient>=0.18.0
-python-ironic-inspector-client>=1.0.1
+python-ironic-inspector-client>=1.2.0
 python-ironicclient>=0.8.0
 python-keystoneclient>=1.6.0,!=1.8.0
 python-magnumclient>=0.2.1
@@ -163,10 +163,11 @@ python-memcached>=1.56
 python-mistralclient>=1.0.0
 python-muranoclient>=0.7.1
 python-neutronclient>=2.6.0
-python-novaclient>=2.29.0
-python-saharaclient>=0.10.0
+python-novaclient>=2.29.0,!=2.33.0
 python-openstackclient>=1.5.0
 python-openstacksdk>=0.4.1
+python-saharaclient>=0.10.0
+python-senlinclient>=0.1.4
 python-swiftclient>=2.2.0
 python-troveclient>=1.2.0
 python-tuskarclient>=0.1.17
@@ -182,6 +183,7 @@ reno>=0.1.1  # Apache2
 requests>=2.5.2,!=2.8.0
 requests-aws>=0.1.4    # BSD License (3 clause)
 requests-kerberos>=0.6;python_version=='2.7' or python_version=='2.6' # MIT
+requestsexceptions>=1.1.1  # Apache-2.0
 rfc3986>=0.2.0  # Apache-2.0
 Routes>=1.12.3,!=2.0,!=2.1;python_version=='2.7'
 Routes>=1.12.3,!=2.0;python_version!='2.7'
@@ -213,7 +215,7 @@ websocket-client>=0.32.0 # LGPLv2+
 websockify>=0.6.1
 wheel
 wmi;sys_platform=='win32'
-WSME>=0.7
+WSME>=0.8
 xattr>=0.4
 XenAPI>=1.2
 XStatic>=1.0.0  # MIT License
@@ -259,6 +261,7 @@ django-nose>=1.2
 doc8  # Apache-2.0
 feedparser
 fixtures>=1.3.1
+freezegun  # Apache-2.0
 gabbi>=1.1.4  # Apache-2.0
 hgtools # dependency of pytest-runner that is only in setup_requires
 httpretty>=0.8.4,<0.8.7
@@ -297,7 +300,6 @@ selenium
 setuptools>=16.0
 sphinx>=1.1.2,!=1.2.0,!=1.3b1,<1.3
 sphinxcontrib-blockdiag
-sphinxcontrib-docbookrestapi
 sphinxcontrib-httpdomain
 sphinxcontrib-seqdiag
 sphinxcontrib-pecanwsme>=0.8
@@ -326,8 +328,10 @@ zake>=0.1.6 # Apache-2.0
 # next hacking release). Only these versions will be selected, because hacking
 # specifies the concrete version to choose.
 flake8>=2.2.4,<=2.4.1
+flake8_docstrings==0.2.1.post1
 hacking>=0.10.2,<0.11
 mccabe==0.2.1 # MIT License
+pep257==0.7.0 # MIT License
 pep8==1.5.7
 pyflakes==0.8.1
 pylint==1.4.4  # GNU GPL v2
