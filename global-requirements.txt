@@ -44,8 +44,10 @@ falcon>=0.1.6
 Flask>=0.10,<1.0
 futures>=3.0;python_version=='2.7' or python_version=='2.6'
 futurist>=0.1.2  # Apache-2.0
+gitdb>=0.6.4 # BSD License (3 clause)
 glance_store>=0.7.1,!=0.9.0            # Apache-2.0
 greenlet>=0.3.2
+GitPython>=1.0.1 # BSD License (3 clause)
 happybase>=0.5,!=0.7;python_version=='2.7'
 httplib2>=0.7.5
 influxdb>=2.2.0                       # MIT License
@@ -83,9 +85,9 @@ oslo.concurrency>=2.3.0         # Apache-2.0
 oslo.context>=0.2.0                     # Apache-2.0
 oslo.db>=3.0.0  # Apache-2.0
 oslo.i18n>=1.5.0  # Apache-2.0
-oslo.log>=1.8.0  # Apache-2.0
-oslo.messaging>=1.16.0,!=1.17.0,!=1.17.1,!=2.6.0,!=2.6.1 # Apache-2.0
-oslo.middleware>=2.8.0                  # Apache-2.0
+oslo.log>=1.12.0  # Apache-2.0
+oslo.messaging>2.6.1,!=2.8.0 # Apache-2.0
+oslo.middleware>=2.9.0                  # Apache-2.0
 oslo.policy>=0.5.0  # Apache-2.0
 oslo.reports>=0.6.0  # Apache-2.0
 oslo.rootwrap>=2.0.0  # Apache-2.0
@@ -115,7 +117,7 @@ pecan>=1.0.0
 pexpect>=3.1,!=3.3 # ISC License
 pika>=0.10.0
 pika-pool>=0.1.2
-Pillow>=2.4.0,<3.0.0 # MIT
+Pillow>=2.4.0 # MIT
 Pint>=0.5  # BSD
 pip>=6.0
 posix_ipc
@@ -125,7 +127,7 @@ pyasn1
 pyasn1_modules
 pycadf>=1.1.0
 pycrypto>=2.6
-PyECLib==1.0.7                          # BSD
+PyECLib>=1.0.7                          # BSD
 pyghmi>=0.6.11
 pyinotify>=0.9.6;sys_platform!='win32' and sys_platform!='darwin' and sys_platform!='sunos5' # MIT
 pykmip>=0.4.0  # Apache 2.0 License
