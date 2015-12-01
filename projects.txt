@@ -33,6 +33,7 @@ openstack/keystoneauth
 openstack/keystoneauth-saml2
 openstack/keystonemiddleware
 openstack/kolla
+openstack/kolla-mesos
 openstack/magnum
 openstack/manila
 openstack/manila-ui
@@ -130,6 +131,7 @@ openstack/taskflow
 openstack/tempest
 openstack/tempest-lib
 openstack/tooz
+openstack/tosca-parser
 openstack/tripleo-common
 openstack/trove
 openstack/training-guides

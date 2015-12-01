@@ -17,7 +17,7 @@ castellan>=0.2.0 # Apache-2.0
 ceilometermiddleware>=0.1.0
 cachetools>=1.0.0 # MIT License
 cffi
-cliff>=1.14.0  # Apache-2.0
+cliff>=1.15.0  # Apache-2.0
 cmd2>=0.6.7
 PuLP>=1.0.4
 contextlib2>=0.4.0 # PSF License
@@ -118,7 +118,7 @@ pbr>=1.6
 pecan>=1.0.0
 pexpect>=3.1,!=3.3 # ISC License
 pika>=0.10.0
-pika-pool>=0.1.2
+pika-pool>=0.1.3
 Pillow>=2.4.0 # MIT
 Pint>=0.5  # BSD
 pip>=6.0
@@ -183,7 +183,7 @@ PyYAML>=3.1.0
 pywin32;sys_platform=='win32'
 qpid-python;python_version=='2.7'
 reno>=0.1.1  # Apache2
-requests>=2.5.2,!=2.8.0
+requests>=2.8.1
 requests-aws>=0.1.4    # BSD License (3 clause)
 requests-kerberos>=0.6;python_version=='2.7' or python_version=='2.6' # MIT
 requestsexceptions>=1.1.1  # Apache-2.0
@@ -294,7 +294,7 @@ python-ldap>=2.4;python_version=='2.7'
 python-subunit>=0.0.18
 pyzmq>=14.3.1 # LGPL+BSD
 redis>=2.10.0
-requests-mock>=0.6.0  # Apache-2.0
+requests-mock>=0.7.0  # Apache-2.0
 retrying>=1.2.3,!=1.3.0 # Apache-2.0
 selenium
 # While setuptools cannot deal with pre-installed incompatible versions,
