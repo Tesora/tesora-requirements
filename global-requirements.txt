@@ -39,7 +39,7 @@ django_openstack_auth>=2.0.0
 dnspython>=1.12.0;python_version<'3.0'
 dnspython3>=1.12.0;python_version>='3.0'
 dogpile.cache>=0.5.4
-elasticsearch>=1.3.0
+elasticsearch>=1.3.0,<2.0
 enum34;python_version=='2.7' or python_version=='2.6'
 eventlet>=0.17.4
 extras
@@ -90,17 +90,20 @@ oslo.cache>=0.8.0  # Apache-2.0
 oslo.config>=2.7.0  # Apache-2.0
 oslo.concurrency>=2.3.0         # Apache-2.0
 oslo.context>=0.2.0                     # Apache-2.0
-oslo.db>=3.2.0  # Apache-2.0
+oslo.db>=4.1.0  # Apache-2.0
 oslo.i18n>=1.5.0  # Apache-2.0
 oslo.log>=1.12.0  # Apache-2.0
-oslo.messaging>2.6.1,!=2.8.0 # Apache-2.0
+# NOTE(mriedem): oslo.messaging 3.1.0 breaks Ironic
+oslo.messaging>2.6.1,!=2.8.0,!=3.1.0 # Apache-2.0
 oslo.middleware>=3.0.0                  # Apache-2.0
 oslo.policy>=0.5.0  # Apache-2.0
 oslo.reports>=0.6.0  # Apache-2.0
 oslo.rootwrap>=2.0.0  # Apache-2.0
 oslo.serialization>=1.10.0              # Apache-2.0
 oslo.service>=1.0.0                     # Apache-2.0
-oslo.utils>=2.8.0                       # Apache-2.0
+# NOTE(mriedem): oslo.utils 3.1.0 removed it's runtime
+# dependency on netifaces which breaks nearly everyone.
+oslo.utils>=2.8.0,!=3.1.0               # Apache-2.0
 oslo.vmware>=1.16.0                     # Apache-2.0
 oslo.versionedobjects>=0.13.0
 osprofiler>=0.3.1                       # Apache-2.0
@@ -113,7 +116,7 @@ os-net-config
 os-refresh-config
 os-testr>=0.4.1
 ovs>=2.4.0;python_version=='2.7'        # Apache-2.0
-os-win>=0.0.6                           # Apache-2.0
+os-win>=0.0.7                           # Apache-2.0
 paramiko>=1.13.0
 Parsley
 passlib>=1.6
@@ -162,7 +165,7 @@ python-congressclient>=1.0.0
 python-designateclient>=1.5.0
 python-heatclient>=0.6.0
 python-glanceclient>=0.18.0
-python-ironic-inspector-client>=1.2.0
+python-ironic-inspector-client>=1.3.0
 python-ironicclient>=0.8.0
 python-keystoneclient>=1.6.0,!=1.8.0
 python-magnumclient>=0.2.1
@@ -171,7 +174,7 @@ python-mistralclient>=1.0.0
 python-muranoclient>=0.7.1
 python-neutronclient>=2.6.0
 python-novaclient>=2.29.0,!=2.33.0
-python-openstackclient>=1.5.0
+python-openstackclient>=2.0.0
 python-saharaclient>=0.10.0
 python-senlinclient>=0.1.7
 python-swiftclient>=2.2.0
@@ -273,7 +276,6 @@ fixtures>=1.3.1
 freezegun  # Apache-2.0
 gabbi>=1.1.4  # Apache-2.0
 hgtools # dependency of pytest-runner that is only in setup_requires
-httpretty>=0.8.4,<0.8.7
 kafka-python>=0.9.2 # Apache-2.0
 keyring>=5.5.1
 ldappool>=1.0;python_version=='2.7' # MPL
