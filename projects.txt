@@ -22,12 +22,14 @@ openstack/designate-dashboard
 openstack/diskimage-builder
 openstack/django_openstack_auth
 openstack/dragonflow
+openstack/ekko
 openstack/futurist
 openstack/glance
 openstack/glance_store
 openstack/heat
 openstack/heat-translator
 openstack/horizon
+openstack/i18n
 openstack/ironic
 openstack/ironic-inspector
 openstack/ironic-lib
@@ -37,6 +39,7 @@ openstack/keystoneauth
 openstack/keystonemiddleware
 openstack/kolla
 openstack/kolla-mesos
+openstack/kosmos
 openstack/magnum
 openstack/manila
 openstack/manila-ui
@@ -48,7 +51,9 @@ openstack/murano
 openstack/murano-agent
 openstack/murano-dashboard
 openstack/networking-bagpipe
+openstack/networking-hyperv
 openstack/networking-l2gw
+openstack/networking-midonet
 openstack/networking-odl
 openstack/networking-ofagent
 openstack/networking-onos
@@ -70,7 +75,6 @@ openstack/os-cloud-config
 openstack/os-collect-config
 openstack/os-refresh-config
 openstack/os-win
-openstack/oslo-incubator
 openstack/oslo.cache
 openstack/oslo.concurrency
 openstack/oslo.config
@@ -115,6 +119,7 @@ openstack/python-openstackclient
 openstack/python-openstacksdk
 openstack/python-saharaclient
 openstack/python-scciclient
+openstack/python-searchlightclient
 openstack/python-senlinclient
 openstack/python-solumclient
 openstack/python-swiftclient
@@ -129,12 +134,14 @@ openstack/sahara
 openstack/sahara-dashboard
 openstack/sahara-extra
 openstack/sahara-image-elements
+openstack/searchlight
 openstack/senlin
 openstack/senlin-dashboard
 openstack/stevedore
 openstack/swauth
 openstack/swift
 openstack/tacker
+openstack/tap-as-a-service
 openstack/taskflow
 openstack/tempest
 openstack/tempest-lib
