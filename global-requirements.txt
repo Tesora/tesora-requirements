@@ -5,6 +5,7 @@ anyjson>=0.3.3
 appdirs>=1.3.0  # MIT License
 argparse
 argcomplete>=0.6.8  # Apache-2.0
+astroid<1.4.0 # breaks pylint 1.4.4
 autobahn>=0.10.1  # MIT License
 automaton>=0.5.0  # Apache-2.0
 beautifulsoup4
@@ -32,7 +33,7 @@ django-babel>=0.3.4
 django-bootstrap-form
 django_compressor>=1.4
 django-formtools
-django_openstack_auth>=2.0.0
+django_openstack_auth>=2.0.0,!=2.1.0
 dnspython>=1.12.0;python_version<'3.0'
 dnspython3>=1.12.0;python_version>='3.0'
 dogpile.cache>=0.5.4
@@ -85,8 +86,12 @@ oslo.db>=2.4.1  # Apache-2.0
 oslo.i18n>=1.5.0  # Apache-2.0
 oslo.log>=1.8.0  # Apache-2.0
 # NOTE(mriedem): oslo.messaging 2.6.0->2.9.0 is excluded due to bug 1513630.
-oslo.messaging>=1.16.0,!=1.17.0,!=1.17.1,!=2.6.0,!=2.6.1,!=2.7.0,!=2.8.0,!=2.8.1,!=2.9.0 # Apache-2.0
-oslo.middleware>=2.8.0                  # Apache-2.0
+# NOTE(mriedem): oslo.messaging 3.1.0 breaks Ironic
+oslo.messaging>=1.16.0,!=1.17.0,!=1.17.1,!=2.6.0,!=2.6.1,!=2.7.0,!=2.8.0,!=2.8.1,!=2.9.0,!=3.1.0 # Apache-2.0
+# NOTE(mriedem): oslo.middleware had dropped the namespace package which
+# breaks upgrades from kilo to liberty. A shim was added back in 3.3.0 to
+# get the grenade upgrade to work properly
+oslo.middleware>=2.8.0,!=3.0.0,!=3.1.0,!=3.2.0  # Apache-2.0
 oslo.policy>=0.5.0  # Apache-2.0
 oslo.reports>=0.1.0  # Apache-2.0
 oslo.rootwrap>=2.0.0  # Apache-2.0
@@ -177,7 +182,8 @@ PyYAML>=3.1.0
 pywin32;sys_platform=='win32'
 qpid-python;python_version=='2.7'
 reno>=0.1.1  # Apache2
-requests>=2.5.2,!=2.8.0
+# NOTE(mriedem): requests 2.9.0 breaks IPv6 hostname parsing, see LP 1526413
+requests>=2.5.2,!=2.8.0,!=2.9.0
 requests-aws>=0.1.4    # BSD License (3 clause)
 requests-kerberos>=0.6;python_version=='2.7' or python_version=='2.6' # MIT
 rfc3986>=0.2.0  # Apache-2.0
