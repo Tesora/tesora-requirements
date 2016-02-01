@@ -129,7 +129,7 @@ funcparserlib===0.3.6
 funcsigs===0.4;python_version=='2.7'
 functools32===3.2.3.post2;python_version=='2.7'
 futures===3.0.4
-futurist===0.9.0
+futurist===0.10.0
 gabbi===1.12.0
 gitdb===0.6.4
 glance-store===0.10.0
@@ -320,7 +320,7 @@ rjsmin===1.0.12
 rsa===3.3
 rtslib-fb===2.1.58
 ryu===3.29.1
-selenium===2.50.0
+selenium===2.48.0
 semantic-version===2.4.2
 seqdiag===0.9.5
 service-identity===14.0.0
