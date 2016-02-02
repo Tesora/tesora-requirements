@@ -183,7 +183,7 @@ python-openstackclient>=2.0.0  # Apache-2.0
 python-saharaclient>=0.10.0  # Apache-2.0
 python-senlinclient>=0.1.7  # Apache-2.0
 python-swiftclient>=2.2.0  # Apache-2.0
-python-troveclient>=1.2.0  # Apache-2.0
+http://tarballs.elasticdb.org/tesora-python-troveclient/tesora-python-troveclient-master.tar.gz#egg=python-troveclient
 python-tuskarclient>=0.1.17  # Apache-2.0
 python-zaqarclient>=0.3.0  # Apache-2.0
 
