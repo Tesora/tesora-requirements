@@ -106,7 +106,6 @@ openstack/python-saharaclient
 openstack/python-senlinclient
 openstack/python-solumclient
 openstack/python-swiftclient
-openstack/python-troveclient
 openstack/python-tuskarclient
 openstack/python-zaqarclient
 openstack/rally
@@ -130,5 +129,5 @@ openstack/tuskar-ui
 openstack/vmware-nsx
 openstack/zaqar
 tesora/tesora-horizon
-tesora/tesora-pythontroveclient
+tesora/tesora-python-troveclient
 tesora/tesora-trove
