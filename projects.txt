@@ -8,6 +8,7 @@ openstack/astara-neutron
 openstack/automaton
 openstack/bandit
 openstack/barbican
+openstack/bifrost
 openstack/blazar-nova
 openstack/castellan
 openstack/ceilometer
@@ -125,7 +126,6 @@ openstack/python-solumclient
 openstack/python-swiftclient
 openstack/python-tackerclient
 openstack/python-tripleoclient
-openstack/python-tuskarclient
 openstack/python-zaqarclient
 openstack/rally
 openstack/requirements
@@ -149,9 +149,6 @@ openstack/tooz
 openstack/tosca-parser
 openstack/tripleo-common
 openstack/trove
-openstack/training-guides
-openstack/tuskar
-openstack/tuskar-ui
 openstack/vmware-nsx
 openstack/zaqar
 tesora/tesora-horizon
