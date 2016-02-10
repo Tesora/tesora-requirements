@@ -41,8 +41,10 @@ openstack/keystonemiddleware
 openstack/kolla
 openstack/kolla-mesos
 openstack/kosmos
+openstack/kuryr
 openstack/magnum
 openstack/manila
+openstack/manila-image-elements
 openstack/manila-ui
 openstack/mistral
 openstack/mistral-dashboard
@@ -64,10 +66,11 @@ openstack/networking-vsphere
 openstack/neutron
 openstack/neutron-fwaas
 openstack/neutron-lbaas
+openstack/neutron-lbaas-dashboard
+openstack/neutron-lib
 openstack/neutron-vpnaas
 openstack/nova
 openstack/nova-docker
-openstack/octavia
 openstack/openstack-doc-tools
 openstack/openstackdocstheme
 openstack/os-apply-config
@@ -75,6 +78,7 @@ openstack/os-brick
 openstack/os-cloud-config
 openstack/os-collect-config
 openstack/os-refresh-config
+openstack/os-testr
 openstack/os-win
 openstack/oslo.cache
 openstack/oslo.concurrency
@@ -133,6 +137,7 @@ openstack/sahara
 openstack/sahara-dashboard
 openstack/sahara-extra
 openstack/sahara-image-elements
+openstack/sahara-scenario
 openstack/searchlight
 openstack/senlin
 openstack/senlin-dashboard
