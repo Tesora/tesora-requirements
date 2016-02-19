@@ -130,6 +130,7 @@ openstack/python-solumclient
 openstack/python-swiftclient
 openstack/python-tackerclient
 openstack/python-tripleoclient
+openstack/python-watcherclient
 openstack/python-zaqarclient
 openstack/rally
 openstack/requirements
@@ -137,7 +138,7 @@ openstack/sahara
 openstack/sahara-dashboard
 openstack/sahara-extra
 openstack/sahara-image-elements
-openstack/sahara-scenario
+openstack/sahara-tests
 openstack/searchlight
 openstack/senlin
 openstack/senlin-dashboard
@@ -155,6 +156,7 @@ openstack/tosca-parser
 openstack/tripleo-common
 openstack/trove
 openstack/vmware-nsx
+openstack/watcher
 openstack/zaqar
 tesora/tesora-horizon
 tesora/tesora-python-troveclient
