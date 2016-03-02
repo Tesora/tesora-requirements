@@ -60,7 +60,7 @@ aioeventlet===0.5.1
 alembic===0.8.4
 amqp===1.4.9
 anyjson===0.3.3
-aodhclient===0.2.0
+aodhclient===0.3.0
 appdirs===1.4.0
 argcomplete===1.1.0
 astroid===1.3.8
@@ -92,7 +92,7 @@ contextlib2===0.5.1
 coverage===4.0.3
 croniter===0.3.11
 cryptography===1.2.2
-dcos===0.3.5
+dcos===0.3.6
 ddt===1.0.1
 debtcollector===1.3.0
 decorator===4.0.9
@@ -134,7 +134,7 @@ futures===3.0.5
 futurist===0.13.0
 gabbi===1.12.0
 gitdb===0.6.4
-glance-store===0.11.0
+glance-store===0.12.0
 gnocchiclient===2.2.0
 google-api-python-client===1.5.0
 graphviz===0.4.10
@@ -180,7 +180,7 @@ netaddr===0.7.18
 netifaces===0.10.4
 netmiko===0.3.0
 networkx===1.11
-neutron-lib===0.0.1
+neutron-lib===0.0.2
 nodeenv===0.13.6
 nose===1.3.7
 nose-exclude===0.4.1
@@ -193,7 +193,7 @@ oauthlib===1.0.3
 openstack-doc-tools===0.33.0
 openstack.nose-plugin===0.11
 openstackdocstheme===1.2.7
-openstacksdk===0.7.4
+openstacksdk===0.8.0
 ordereddict===1.1
 os-apply-config===0.1.32
 os-brick===1.1.0
@@ -203,7 +203,7 @@ os-collect-config===0.1.37
 os-net-config===0.1.7
 os-refresh-config===0.1.11
 os-testr===0.6.0
-os-win===0.2.1
+os-win===0.2.2
 oslo.cache===1.4.0
 oslo.concurrency===3.6.0
 oslo.config===3.9.0
@@ -227,7 +227,7 @@ oslotest===2.3.0
 osprofiler===1.2.0
 overtest===0.14.0
 ovs===2.4.0;python_version=='2.7'
-packaging===16.4
+packaging===16.5
 pager===3.3
 paramiko===1.16.0
 passlib===1.6.5
@@ -262,7 +262,7 @@ pymongo===3.2.1
 pyngus===2.0.3
 pyparsing===2.1.0
 pypng===0.0.18
-pyroute2===0.3.15
+pyroute2===0.3.16
 pyrsistent===0.11.12
 pysaml2===4.0.2
 pysendfile===2.0.1
@@ -283,20 +283,20 @@ python-heatclient===0.9.0
 python-ironic-inspector-client===1.3.0;python_version=='3.4'
 python-ironic-inspector-client===1.4.0;python_version=='2.7'
 python-ironicclient===1.1.0
-python-keystoneclient===2.2.0
+python-keystoneclient===2.3.0
 python-ldap===2.4.25;python_version=='2.7'
 python-magnumclient===1.1.0
 python-manilaclient===1.7.0
 python-memcached===1.57
 python-mimeparse===1.5.1
-python-mistralclient===1.2.0
+python-mistralclient===2.0.0
 python-muranoclient===0.8.2
 python-neutronclient===4.0.0
 python-novaclient===3.2.0
 python-openstackclient===2.1.0
 python-pytun===2.2.1
 python-qpid-proton===0.10
-python-saharaclient===0.12.0
+python-saharaclient===0.13.0
 python-senlinclient===0.3.0
 python-subunit===1.2.0
 python-swiftclient===2.7.0
