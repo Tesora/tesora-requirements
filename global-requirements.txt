@@ -17,7 +17,7 @@ castellan>=0.3.1 # Apache-2.0
 ceilometermiddleware>=0.1.0  # Apache-2.0
 cachetools>=1.0.0 # MIT License
 cffi  # MIT
-cliff!=1.16.0,>=1.15.0  # Apache-2.0
+cliff!=1.16.0,!=1.17.0,>=1.15.0  # Apache-2.0
 cmd2>=0.6.7  # MIT
 PuLP>=1.0.4  # MIT
 contextlib2>=0.4.0 # PSF License
@@ -32,12 +32,12 @@ diskimage-builder>=1.1.2,!=1.6.0,!=1.7.0,!=1.7.1  # Apache-2.0
 Django>=1.8,<1.9  # BSD
 django-babel>=0.4.0  # BSD
 django-bootstrap-form  # BSD
-django_compressor>=1.4  # MIT
+django_compressor>=2.0  # MIT
 django-formtools  # BSD
 django_openstack_auth>=2.0.0  # Apache-2.0
 dnspython>=1.12.0;python_version<'3.0'  # http://www.dnspython.org/LICENSE
 dnspython3>=1.12.0;python_version>='3.0'  # http://www.dnspython.org/LICENSE
-dogpile.cache>=0.5.4  # BSD
+dogpile.cache>=0.5.7  # BSD
 elasticsearch>=1.3.0,<2.0  # Apache-2.0
 enum34;python_version=='2.7' or python_version=='2.6' or python_version=='3.3'  # BSD
 # NOTE: New versions of eventlet should not be accepted lightly
@@ -51,7 +51,7 @@ futures>=3.0;python_version=='2.7' or python_version=='2.6'  # BSD
 futurist>=0.11.0  # Apache-2.0
 funcsigs>=0.4;python_version=='2.7' or python_version=='2.6'  # Apache-2.0
 gitdb>=0.6.4 # BSD License (3 clause)
-glance_store>=0.12.0            # Apache-2.0
+glance_store>=0.13.0            # Apache-2.0
 gnocchiclient>=2.1.0  # Apache-2.0
 google-api-python-client>=1.4.2        # Apache-2.0
 graphviz>=0.4.0 # MIT License
@@ -60,7 +60,7 @@ GitPython>=1.0.1 # BSD License (3 clause)
 happybase>=0.5,!=0.7;python_version=='2.7'  # MIT
 httplib2>=0.7.5  # MIT
 influxdb>=2.2.0                       # MIT License
-ironic-lib>=0.5.0  # Apache-2.0
+ironic-lib>=1.1.0  # Apache-2.0
 ironic-discoverd>=1.0.0                # Apache-2.0
 ipaddress>=1.0.7;python_version<'3.3'  # PSF
 iso8601>=0.1.9  # MIT
@@ -90,6 +90,7 @@ netmiko>=0.3.0 # MIT
 networkx>=1.10  # BSD
 neutron-lib>=0.0.1  # Apache-2.0
 notifier>=1.0.3  # Apache-2.0
+oauth2client>=1.5.0  # Apache-2.0
 oauthlib>=0.6  # BSD
 openstackdocstheme>=1.0.3  # Apache-2.0
 ordereddict  # MIT
@@ -180,7 +181,7 @@ python-cinderclient>=1.3.1  # Apache-2.0
 python-congressclient>=1.0.0  # Apache-2.0
 python-designateclient>=1.5.0  # Apache-2.0
 python-heatclient>=0.6.0  # Apache-2.0
-python-glanceclient>=1.2.0  # Apache-2.0
+python-glanceclient>=2.0.0  # Apache-2.0
 python-ironic-inspector-client>=1.3.0  # Apache-2.0
 python-ironicclient>=1.1.0  # Apache-2.0
 python-keystoneclient>=1.6.0,!=1.8.0,!=2.1.0  # Apache-2.0
@@ -192,7 +193,9 @@ python-neutronclient>=2.6.0  # Apache-2.0
 python-novaclient>=2.29.0,!=2.33.0  # Apache-2.0
 python-openstackclient>=2.1.0  # Apache-2.0
 python-saharaclient>=0.13.0  # Apache-2.0
-python-senlinclient>=0.1.7  # Apache-2.0
+python-searchlightclient>=0.2.0 #Apache-2.0
+python-senlinclient>=0.3.0  # Apache-2.0
+python-solumclient>=1.2.7  # Apache-2.0
 python-swiftclient>=2.2.0  # Apache-2.0
 python-troveclient>=1.2.0  # Apache-2.0
 python-zaqarclient>=0.3.0  # Apache-2.0
@@ -282,6 +285,7 @@ yaql>=1.1.0  # Apache 2.0 License
 bandit>=0.17.3  # Apache-2.0
 bashate>=0.2 # Apache-2.0
 cliff-tablib>=1.0  # Apache-2.0
+couchdb>=0.8 # Apache-2.0
 coverage>=3.6  # Apache-2.0
 demjson # GNU LGPL 3.0
 docker-py>=1.6.0  # Apache-2.0
