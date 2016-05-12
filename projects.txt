@@ -11,8 +11,6 @@ openstack/barbican
 openstack/bifrost
 openstack/blazar-nova
 openstack/castellan
-openstack/ceilometer
-openstack/ceilometermiddleware
 openstack/cinder
 openstack/cliff
 openstack/congress
@@ -41,8 +39,8 @@ openstack/ironic-python-agent
 openstack/keystone
 openstack/keystoneauth
 openstack/keystonemiddleware
+openstack/kingbird
 openstack/kolla
-openstack/kolla-mesos
 openstack/kosmos
 openstack/kuryr
 openstack/magnum
@@ -108,7 +106,6 @@ openstack/oslotest
 openstack/pycadf
 openstack/python-barbicanclient
 openstack/python-blazarclient
-openstack/python-ceilometerclient
 openstack/python-cinderclient
 openstack/python-congressclient
 openstack/python-cueclient
