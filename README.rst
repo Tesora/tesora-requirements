@@ -107,8 +107,8 @@ in ``projects.txt``) are expected to run a requirements compatibility
 job. This job ensures that a project can not change any dependencies to
 versions not compatible with ``global-requirements.txt``. It also ensures that
 those projects can not add a requirement that is not already in
-``global-requirements.txt``. This job should be proposed to infra at the same
-time as proposing the change to ``projects.txt`` in
+``global-requirements.txt``. This ``check-requirements`` job should
+be merged in infra before proposing the change to ``projects.txt`` in
 ``openstack/requirements``.
 
 Automatic Sync of Accepted Requirements
@@ -247,6 +247,12 @@ General Review Criteria
   them today. Entries in the blacklist should have a comment explaining the
   reason for blacklisting.
 
+- Reviews that only update ``projects.txt`` should be workflow approved
+  alongside or before other reviews in order to have the OpenStack Proposal Bot
+  propagation be useful as soon as possible for the other projects. For project
+  removal or addition, the +1 from the current PTL (or core if the PTL proposed
+  the change) should be enough.
+
 For new Requirements
 --------------------
 
@@ -331,13 +337,15 @@ but will not introduce any changes that would make it impossible to
 run on the latest Ubuntu LTS or latest RHEL.
 
 As such we really need to know what the current state of packaging is
-on these platforms (and ideally Debian and SUSE as well).
+on these platforms (and ideally Debian, Gentoo, and SUSE as well).
 
 For people unfamiliar with Linux Distro packaging you can use the
 following tools to search for packages:
 
  - Ubuntu - http://packages.ubuntu.com/
  - Fedora - https://apps.fedoraproject.org/packages/
+ - Gentoo - https://packages.gentoo.org/
+ - SUSE - https://build.opensuse.org/project/show/devel:languages:python
 
 For ``upper-constraints.txt`` changes
 -------------------------------------
