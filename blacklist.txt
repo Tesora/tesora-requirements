@@ -10,4 +10,3 @@ pyflakes
 pylint
 # release changelog generator - xxx - under discussion
 reno
-python-troveclient
