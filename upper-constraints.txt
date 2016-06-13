@@ -136,7 +136,7 @@ futures===3.0.5
 futurist===0.13.0
 gabbi===1.12.0
 gitdb===0.6.4
-glance-store===0.13.0
+glance_store===0.13.1
 gnocchiclient===2.2.0
 google-api-python-client===1.5.0
 graphviz===0.4.10
@@ -162,8 +162,8 @@ jsonschema===2.5.1
 kafka-python===0.9.5
 kazoo===2.2.1
 keyring===8.4.1
-keystoneauth1===2.4.0
-keystonemiddleware===4.4.0
+keystoneauth1===2.4.1
+keystonemiddleware===4.4.1
 klein===15.3.1
 kombu===3.0.34
 ldap3===1.0.4
@@ -208,7 +208,7 @@ os-refresh-config===0.1.11
 os-testr===0.6.0
 os-win===0.4.2
 oslo.cache===1.6.0
-oslo.concurrency===3.7.0
+oslo.concurrency===3.7.1
 oslo.config===3.9.0
 oslo.context===2.2.0
 oslo.db===4.7.0
@@ -284,7 +284,7 @@ python-editor===0.5
 python-glanceclient===2.0.0
 python-heatclient===1.1.0
 python-ironic-inspector-client===1.6.0
-python-ironicclient===1.3.0
+python-ironicclient===1.3.1
 python-keystoneclient===2.3.1
 python-ldap===2.4.25;python_version=='2.7'
 python-magnumclient===2.0.0
@@ -304,7 +304,7 @@ python-senlinclient===0.4.1
 python-solumclient===2.0.0
 python-subunit===1.2.0
 python-swiftclient===3.0.0
-python-troveclient===2.1.1
+python-troveclient===2.1.2
 python-zaqarclient===1.0.0
 pytz===2015.7
 pyudev===0.19.0
