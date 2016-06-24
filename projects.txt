@@ -61,12 +61,12 @@ openstack/murano-agent
 openstack/murano-dashboard
 openstack/networking-bagpipe
 openstack/networking-generic-switch
+openstack/networking-fujitsu
 openstack/networking-hyperv
 openstack/networking-l2gw
 openstack/networking-midonet
 openstack/networking-nec
 openstack/networking-odl
-openstack/networking-ofagent
 openstack/networking-onos
 openstack/networking-ovn
 openstack/networking-sfc
@@ -79,6 +79,7 @@ openstack/neutron-lib
 openstack/neutron-vpnaas
 openstack/nova
 openstack/nova-docker
+openstack/nova-lxd
 openstack/octavia
 openstack/openstack-doc-tools
 openstack/openstackdocstheme
@@ -88,6 +89,7 @@ openstack/os-cloud-config
 openstack/os-collect-config
 openstack/os-refresh-config
 openstack/os-testr
+openstack/os-vif
 openstack/os-win
 openstack/osc-lib
 openstack/oslo.cache
@@ -111,6 +113,7 @@ openstack/oslo.vmware
 openstack/oslosphinx
 openstack/oslotest
 openstack/pycadf
+openstack/pymod2pkg
 openstack/python-barbicanclient
 openstack/python-blazarclient
 openstack/python-brick-cinderclient-ext
@@ -131,6 +134,7 @@ openstack/python-monascaclient
 openstack/python-muranoclient
 openstack/python-neutronclient
 openstack/python-novaclient
+openstack/python-oneviewclient
 openstack/python-openstackclient
 openstack/python-openstacksdk
 openstack/python-saharaclient
@@ -142,9 +146,10 @@ openstack/python-solumclient
 openstack/python-swiftclient
 openstack/python-tackerclient
 openstack/python-tripleoclient
+openstack/python-vitrageclient
 openstack/python-watcherclient
 openstack/python-zaqarclient
-openstack/rally
+openstack/renderspec
 openstack/requirements
 openstack/sahara
 openstack/sahara-dashboard
@@ -155,6 +160,8 @@ openstack/senlin
 openstack/senlin-dashboard
 openstack/smaug
 openstack/smaug-dashboard
+openstack/solum
+openstack/solum-dashboard
 openstack/stevedore
 openstack/swauth
 openstack/swift
@@ -166,8 +173,11 @@ openstack/tempest
 openstack/tempest-lib
 openstack/tooz
 openstack/tosca-parser
+openstack/tricircle
 openstack/tripleo-common
+openstack/tripleo-validations
 openstack/trove
+openstack/vitrage
 openstack/vmware-nsx
 openstack/watcher
 openstack/zaqar
