@@ -32,7 +32,7 @@ openstack/fuxi
 openstack/gce-api
 openstack/glance
 openstack/glance_store
-openstack/gluon
+openstack/glare
 openstack/heat
 openstack/heat-translator
 openstack/horizon
@@ -71,6 +71,7 @@ openstack/mox3
 openstack/murano
 openstack/murano-agent
 openstack/murano-dashboard
+openstack/murano-pkg-check
 openstack/networking-bagpipe
 openstack/networking-generic-switch
 openstack/networking-fujitsu
@@ -143,6 +144,7 @@ openstack/openstack-ansible-specs
 openstack/openstack-ansible-tests
 openstack/openstack-doc-tools
 openstack/openstackdocstheme
+openstack/os-api-ref
 openstack/os-apply-config
 openstack/os-brick
 openstack/os-cloud-config
@@ -182,6 +184,7 @@ openstack/python-congressclient
 openstack/python-cueclient
 openstack/python-designateclient
 openstack/python-glanceclient
+openstack/python-glareclient
 openstack/python-heatclient
 openstack/python-ironic-inspector-client
 openstack/python-ironicclient
@@ -237,6 +240,7 @@ openstack/tricircle
 openstack/tripleo-common
 openstack/tripleo-validations
 openstack/trove
+openstack/virtualbmc
 openstack/vitrage
 openstack/vmware-nsx
 openstack/watcher
