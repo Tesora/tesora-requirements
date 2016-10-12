@@ -132,7 +132,6 @@ openstack/openstack-ansible-os_trove
 openstack/openstack-ansible-os_watcher
 openstack/openstack-ansible-os_zaqar
 openstack/openstack-ansible-pip_install
-openstack/openstack-ansible-pip_lock_down
 openstack/openstack-ansible-plugins
 openstack/openstack-ansible-rabbitmq_server
 openstack/openstack-ansible-repo_build
@@ -183,6 +182,7 @@ openstack/python-cinderclient
 openstack/python-congressclient
 openstack/python-cueclient
 openstack/python-designateclient
+openstack/python-freezerclient
 openstack/python-glanceclient
 openstack/python-glareclient
 openstack/python-heatclient
@@ -243,6 +243,7 @@ openstack/trove
 openstack/virtualbmc
 openstack/vitrage
 openstack/vmware-nsx
+openstack/vmware-nsxlib
 openstack/watcher
 openstack/watcher-dashboard
 openstack/zaqar
