@@ -11,6 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import print_function
+
+import copy
 import optparse
 import os.path
 import subprocess
@@ -66,7 +69,7 @@ def _freeze(requirements, python):
     output = []
     try:
         version_out = subprocess.check_output(
-            [python, "--version"], stderr=subprocess.STDOUT)
+            [python, "--version"], stderr=subprocess.STDOUT).decode('utf-8')
         output.append(version_out)
         version_all = version_out.split()[1]
         version = '.'.join(version_all.split('.')[:2])
@@ -78,7 +81,8 @@ def _freeze(requirements, python):
                 [pip_bin, 'install', '-U', 'pip', 'setuptools', 'wheel']))
             output.append(subprocess.check_output(
                 [pip_bin, 'install', '-r', requirements]))
-            freeze = subprocess.check_output([pip_bin, 'freeze'])
+            freeze = subprocess.check_output(
+                [pip_bin, 'freeze']).decode('utf-8')
             output.append(freeze)
             return (version, _parse_freeze(freeze))
     except Exception as exc:
@@ -116,7 +120,8 @@ def _combine_freezes(freezes, blacklist=None):
     for package, versions in sorted(packages.items()):
         if package.lower() in excludes:
             continue
-        if len(versions) != 1 or versions.values()[0] != reference_versions:
+        if (len(versions) != 1 or
+                list(versions.values())[0] != reference_versions):
             # markers
             for version, py_versions in sorted(versions.items()):
                 # Once the ecosystem matures, we can consider using OR.
@@ -126,7 +131,19 @@ def _combine_freezes(freezes, blacklist=None):
                         (package, version, py_version))
         else:
             # no markers
-            yield '%s===%s\n' % (package, versions.keys()[0])
+            yield '%s===%s\n' % (package, list(versions.keys())[0])
+
+
+def _clone_versions(freezes, options):
+    for freeze_data in freezes:
+        versions = [v for v, d in freezes]
+        version, freeze = freeze_data
+        if (version in options.version_map and
+                options.version_map[version] not in versions):
+            print("Duplicating %s freeze to %s" %
+                  (version, options.version_map[version]),
+                  file=sys.stderr)
+            freezes.append((options.version_map[version], copy.copy(freeze)))
 
 
 # -- untested UI glue from here down.
@@ -152,6 +169,15 @@ def _validate_options(options):
         raise Exception(
             "Blacklist file %(path)s not found."
             % dict(path=options.blacklist))
+    version_map = {}
+    for map_entry in options.version_map:
+        if ':' not in map_entry:
+            raise Exception(
+                "Invalid version-map entry %(map_entry)s"
+                % dict(map_entry=map_entry))
+        src, dst = map_entry.split(':')
+        version_map[src] = dst
+    options.version_map = version_map
 
 
 def _parse_blacklist(path):
@@ -173,12 +199,20 @@ def main(argv=None, stdout=None):
     parser.add_option(
         "-b", dest="blacklist",
         help="Filename of a list of package names to exclude.")
+    parser.add_option(
+        "--version-map", dest='version_map', default=[], action='append',
+        help=('Add a : seperated list of versions to clone.  To \'clone\' '
+              'a freeze geberated by python3.4 to python3.5 specify 3.4:3.5.  '
+              'This is intented as as a way to transition between python '
+              'versions when it\'s not possible to have all versions '
+              'installed'))
     options, args = parser.parse_args(argv)
     if stdout is None:
         stdout = sys.stdout
     _validate_options(options)
     freezes = [
         _freeze(options.requirements, python) for python in options.pythons]
+    _clone_versions(freezes, options)
     blacklist = _parse_blacklist(options.blacklist)
     stdout.writelines(_combine_freezes(freezes, blacklist))
     stdout.flush()
