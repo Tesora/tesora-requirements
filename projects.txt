@@ -13,7 +13,9 @@ openstack/blazar-nova
 openstack/castellan
 openstack/cinder
 openstack/cliff
+openstack/compute-hyperv
 openstack/congress
+openstack/craton
 openstack/cue
 openstack/debtcollector
 openstack/designate
@@ -49,6 +51,7 @@ openstack/keystoneauth
 openstack/keystonemiddleware
 openstack/kingbird
 openstack/kolla
+openstack/kolla-ansible
 openstack/kosmos
 openstack/kuryr
 openstack/kuryr-libnetwork
@@ -61,6 +64,7 @@ openstack/manila-ui
 openstack/mistral
 openstack/mistral-dashboard
 openstack/mistral-lib
+openstack/mixmatch
 openstack/monasca-api
 openstack/monasca-common
 openstack/monasca-notification
@@ -182,6 +186,7 @@ openstack/python-blazarclient
 openstack/python-brick-cinderclient-ext
 openstack/python-cinderclient
 openstack/python-congressclient
+openstack/python-cratonclient
 openstack/python-cueclient
 openstack/python-designateclient
 openstack/python-freezerclient
