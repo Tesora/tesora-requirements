@@ -1,5 +1,6 @@
 openstack-dev/hacking
 openstack-dev/pbr
+openstack/almanach
 openstack/anchor
 openstack/automaton
 openstack/bandit
@@ -38,7 +39,9 @@ openstack/i18n
 openstack/ironic
 openstack/ironic-inspector
 openstack/ironic-lib
+openstack/ironic-staging-drivers
 openstack/ironic-python-agent
+openstack/ironic-ui
 openstack/karbor
 openstack/karbor-dashboard
 openstack/keystone
@@ -237,6 +240,7 @@ openstack/tempest-lib
 openstack/tooz
 openstack/tosca-parser
 openstack/tricircle
+openstack/trio2o
 openstack/tripleo-common
 openstack/tripleo-validations
 openstack/trove
