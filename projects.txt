@@ -50,6 +50,7 @@ openstack/keystonemiddleware
 openstack/kingbird
 openstack/kolla
 openstack/kolla-ansible
+openstack/kolla-kubernetes
 openstack/kosmos
 openstack/kuryr
 openstack/kuryr-libnetwork
@@ -83,6 +84,7 @@ openstack/networking-dpm
 openstack/networking-generic-switch
 openstack/networking-fujitsu
 openstack/networking-hyperv
+openstack/networking-l2gw
 openstack/networking-midonet
 openstack/networking-nec
 openstack/networking-odl
@@ -95,6 +97,7 @@ openstack/neutron-fwaas
 openstack/neutron-lbaas
 openstack/neutron-lbaas-dashboard
 openstack/neutron-lib
+openstack/neutron-vpnaas
 openstack/nimble
 openstack/nova
 openstack/nova-docker
@@ -196,7 +199,6 @@ openstack/python-ironic-inspector-client
 openstack/python-ironicclient
 openstack/python-karborclient
 openstack/python-keystoneclient
-openstack/python-keystoneclient-kerberos
 openstack/python-kingbirdclient
 openstack/python-magnumclient
 openstack/python-manilaclient
@@ -239,7 +241,6 @@ openstack/tacker-horizon
 openstack/tap-as-a-service
 openstack/taskflow
 openstack/tempest
-openstack/tempest-lib
 openstack/tooz
 openstack/tosca-parser
 openstack/tricircle
