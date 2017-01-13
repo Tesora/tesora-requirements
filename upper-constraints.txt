@@ -162,7 +162,7 @@ jsonschema===2.5.1
 kafka-python===0.9.5
 kazoo===2.2.1
 keyring===8.4.1
-keystoneauth1===2.4.1
+keystoneauth1===2.4.2
 keystonemiddleware===4.4.1
 klein===15.3.1
 kombu===3.0.34
@@ -196,7 +196,7 @@ oauthlib===1.0.3
 openstack-doc-tools===0.33.0
 openstack.nose-plugin===0.11
 openstackdocstheme===1.3.0
-openstacksdk===0.8.1
+openstacksdk===0.9.0
 ordereddict===1.1
 os-apply-config===0.1.32
 os-brick===1.2.0
@@ -254,7 +254,7 @@ pyScss===1.3.4
 pyasn1===0.1.9
 pyasn1-modules===0.0.8
 pycadf===2.2.0
-pycparser===2.13
+pycparser===2.14
 pycrypto===2.6.1
 pyghmi===0.9.9
 pyinotify===0.9.6
@@ -292,9 +292,9 @@ python-manilaclient===1.8.1
 python-memcached===1.57
 python-mimeparse===1.5.1
 python-mistralclient===2.0.0
-python-muranoclient===0.8.5
+python-muranoclient===0.8.6
 python-neutronclient===4.1.1
-python-novaclient===3.3.1
+python-novaclient===3.3.2
 python-openstackclient===2.3.0
 python-pytun===2.2.1
 python-qpid-proton===0.10
@@ -369,7 +369,7 @@ unicodecsv===0.14.1
 unittest2===1.1.0
 uritemplate===0.6
 urllib3===1.14
-virtualenv===14.0.6
+virtualenv===15.0.3
 voluptuous===0.8.8
 waitress===0.8.10
 warlock===1.2.0
